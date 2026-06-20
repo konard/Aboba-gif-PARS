@@ -1,0 +1,374 @@
+{
+  "part_type": "ROUND_PLATE_WITH_HOLES",
+  "views": {
+    "TOP": {
+      "view": "TOP",
+      "dimensions": [
+        {
+          "type": "LINEAR",
+          "name": "LENGTH",
+          "value": 500.0000002
+        },
+        {
+          "type": "LINEAR",
+          "name": "WIDTH",
+          "value": 500.0000002
+        },
+        {
+          "type": "DIAMETER",
+          "value": 500.0,
+          "center_2d": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "type": "DIAMETER",
+          "value": 10.0,
+          "center_2d": [
+            -53.138147554,
+            -18.144543633
+          ]
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": -53.138147554
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -18.144543633
+        },
+        {
+          "type": "DIAMETER",
+          "value": 10.0,
+          "center_2d": [
+            -38.160423278,
+            78.930109929
+          ]
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": -38.160423278
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": 78.930109929
+        },
+        {
+          "type": "DIAMETER",
+          "value": 10.0,
+          "center_2d": [
+            59.342806812,
+            -21.861447684
+          ]
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": 59.342806812
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -21.861447684
+        },
+        {
+          "type": "DIAMETER",
+          "value": 10.0,
+          "center_2d": [
+            -122.803774096,
+            -100.443165698
+          ]
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": -122.803774096
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -100.443165698
+        },
+        {
+          "type": "DIAMETER",
+          "value": 10.0,
+          "center_2d": [
+            93.765992107,
+            106.083771434
+          ]
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": 93.765992107
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": 106.083771434
+        },
+        {
+          "type": "DIAMETER",
+          "value": 10.0,
+          "center_2d": [
+            107.16669538,
+            -67.802595687
+          ]
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": 107.16669538
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -67.802595687
+        },
+        {
+          "type": "DIAMETER",
+          "value": 10.0,
+          "center_2d": [
+            -138.107800979,
+            59.203984815
+          ]
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": -138.107800979
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": 59.203984815
+        },
+        {
+          "type": "DIAMETER",
+          "value": 10.0,
+          "center_2d": [
+            4.513942176,
+            -101.256613859
+          ]
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": 4.513942176
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -101.256613859
+        },
+        {
+          "type": "DIAMETER",
+          "value": 10.0,
+          "center_2d": [
+            -11.718365287,
+            -183.62404443
+          ]
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": -11.718365287
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -183.62404443
+        }
+      ]
+    },
+    "FRONT": {
+      "view": "FRONT",
+      "dimensions": [
+        {
+          "type": "LINEAR",
+          "name": "LENGTH",
+          "value": 500.0000002
+        },
+        {
+          "type": "LINEAR",
+          "name": "WIDTH",
+          "value": 500.0000002
+        },
+        {
+          "type": "LINEAR",
+          "name": "THICKNESS",
+          "value": 10.000000199999999
+        },
+        {
+          "type": "LINEAR",
+          "name": "HEIGHT",
+          "value": 10.0,
+          "center_2d": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": -53.138147554
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -18.144543633
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": -38.160423278
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": 78.930109929
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": 59.342806812
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -21.861447684
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": -122.803774096
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -100.443165698
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": 93.765992107
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": 106.083771434
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": 107.16669538
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -67.802595687
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": -138.107800979
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": 59.203984815
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": 4.513942176
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -101.256613859
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": -11.718365287
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -183.62404443
+        }
+      ]
+    },
+    "LEFT": {
+      "view": "LEFT",
+      "dimensions": [
+        {
+          "type": "LINEAR",
+          "name": "LENGTH",
+          "value": 500.0000002
+        },
+        {
+          "type": "LINEAR",
+          "name": "WIDTH",
+          "value": 500.0000002
+        },
+        {
+          "type": "LINEAR",
+          "name": "THICKNESS",
+          "value": 10.000000199999999
+        },
+        {
+          "type": "LINEAR",
+          "name": "HEIGHT",
+          "value": 10.0,
+          "center_2d": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": -53.138147554
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -18.144543633
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": -38.160423278
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": 78.930109929
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": 59.342806812
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -21.861447684
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": -122.803774096
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -100.443165698
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": 93.765992107
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": 106.083771434
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": 107.16669538
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -67.802595687
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": -138.107800979
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": 59.203984815
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": 4.513942176
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -101.256613859
+        },
+        {
+          "type": "HOLE_POS_X",
+          "value": -11.718365287
+        },
+        {
+          "type": "HOLE_POS_Y",
+          "value": -183.62404443
+        }
+      ]
+    }
+  }
+}
