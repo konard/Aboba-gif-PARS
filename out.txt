@@ -1,0 +1,1617 @@
+# .\parser\parser.py
+import os
+import sys
+import json
+import faulthandler
+import numpy as np
+
+from OCC.Core.BRepGProp import brepgprop
+from OCC.Core.GProp import GProp_GProps
+from OCC.Core.TopTools import TopTools_IndexedDataMapOfShapeListOfShape
+from OCC.Core.TopExp import topexp
+from OCC.Core.STEPControl import STEPControl_Reader
+from OCC.Core.TopExp import TopExp_Explorer
+from OCC.Core.TopAbs import TopAbs_FACE, TopAbs_FORWARD, TopAbs_REVERSED, TopAbs_EDGE
+from OCC.Core.BRepAdaptor import BRepAdaptor_Surface, BRepAdaptor_Curve
+from OCC.Core.GeomAbs import (
+    GeomAbs_Plane, GeomAbs_Cylinder, GeomAbs_Cone, 
+    GeomAbs_Sphere, GeomAbs_Torus, GeomAbs_BSplineSurface, 
+    GeomAbs_BezierSurface, GeomAbs_SurfaceOfRevolution, 
+    GeomAbs_SurfaceOfExtrusion, GeomAbs_Line, GeomAbs_Circle, GeomAbs_Ellipse
+)
+from OCC.Core.Interface import Interface_Static
+from OCC.Core.Bnd import Bnd_Box
+from OCC.Core.BRepBndLib import brepbndlib
+from OCC.Core.GCPnts import GCPnts_AbscissaPoint
+
+from OCC.Core.BRep import BRep_Tool
+
+import OCC.Core.TopoDS as TopoDS_module
+
+CAST_TO_EDGE = getattr(
+    TopoDS_module,
+    [n for n in dir(TopoDS_module) if "edge" in n.lower()][0]
+)
+
+faulthandler.enable()
+
+_cast_funcs = [name for name in dir(TopoDS_module) if 'face' in name.lower()]
+if not _cast_funcs:
+    raise ImportError("Не найдена функция кастинга Face в TopoDS. Проверьте установку pythonocc-core.")
+CAST_TO_FACE = getattr(TopoDS_module, _cast_funcs[0])
+
+def occ_pnt_to_tuple(pnt): 
+    return (pnt.X(), pnt.Y(), pnt.Z())
+
+def occ_dir_to_tuple(dir_vec): 
+    return (dir_vec.X(), dir_vec.Y(), dir_vec.Z())
+
+def occ_ax3_to_dict(ax3):
+    return {
+        "location": occ_pnt_to_tuple(ax3.Location()),
+        "axis_direction": occ_dir_to_tuple(ax3.Axis().Direction()),
+        "x_direction": occ_dir_to_tuple(ax3.XDirection()),
+        "y_direction": occ_dir_to_tuple(ax3.YDirection())
+    }
+
+def face_area(face):
+    props = GProp_GProps()
+    brepgprop.SurfaceProperties(face, props)
+    return props.Mass()
+
+def face_orientation(face):
+
+    orient = face.Orientation()
+
+    if orient == TopAbs_FORWARD:
+        return "FORWARD"
+
+    if orient == TopAbs_REVERSED:
+        return "REVERSED"
+
+    return str(int(orient))
+
+def compute_bbox(shape):
+
+    bbox = Bnd_Box()
+
+    brepbndlib.Add(shape, bbox)
+
+    xmin, ymin, zmin, xmax, ymax, zmax = bbox.Get()
+
+    return {
+        "xmin": xmin,
+        "ymin": ymin,
+        "zmin": zmin,
+        "xmax": xmax,
+        "ymax": ymax,
+        "zmax": zmax,
+
+        "dx": xmax - xmin,
+        "dy": ymax - ymin,
+        "dz": zmax - zmin
+    }
+
+def analyze_faces_for_drafting(shape):
+    """
+    Извлекает аналитические параметры граней для инженерного анализа и чертежей.
+    """
+    if shape.IsNull():
+        raise ValueError("Передан пустой (Null) Shape. Невозможно выполнить анализ.")
+    
+    face_adjacency = TopTools_IndexedDataMapOfShapeListOfShape()
+
+    topexp.MapShapesAndAncestors(
+        shape,
+        TopAbs_FACE,
+        TopAbs_FACE,
+        face_adjacency
+    )
+        
+    explorer = TopExp_Explorer(shape, TopAbs_FACE)
+    features = []
+    face_idx = 0
+    
+    while explorer.More():
+        try:
+            face = CAST_TO_FACE(explorer.Current())
+            if face.IsNull():
+                print(f"  [WARN] Грань #{face_idx} пропущена (Null Face)")
+                face_idx += 1
+                explorer.Next()
+                continue
+                
+            adaptor = BRepAdaptor_Surface(face)
+            surf_type = adaptor.GetType()
+            
+            feature = {
+                "face_id": face_idx,
+                "type": "UNKNOWN",
+                "params": {},
+                "area": face_area(face),
+                "adjacent_faces": []
+            }
+            
+            if surf_type == GeomAbs_Plane:
+                plane = adaptor.Plane()
+                feature["type"] = "PLANE"
+                feature["params"] = {
+                    "location": occ_pnt_to_tuple(plane.Location()),
+                    "normal": occ_dir_to_tuple(plane.Axis().Direction())
+                }
+            elif surf_type == GeomAbs_Cylinder:
+                cyl = adaptor.Cylinder()
+                v1 = adaptor.FirstVParameter()
+                v2 = adaptor.LastVParameter()
+                feature["type"] = "CYLINDER"
+                height = abs(v2 - v1)
+
+                feature["params"] = {
+                    "radius": cyl.Radius(),
+                    "height": height,
+                    "axis": occ_ax3_to_dict(cyl.Position()),
+                    "orientation": face_orientation(face)
+                }
+            elif surf_type == GeomAbs_Cone:
+                cone = adaptor.Cone()
+                feature["type"] = "CONE"
+                feature["params"] = {
+                    "radius": cone.RefRadius(),
+                    "semi_angle": cone.SemiAngle(),
+                    "axis": occ_ax3_to_dict(cone.Position())
+                }
+            elif surf_type == GeomAbs_Sphere:
+                sphere = adaptor.Sphere()
+                feature["type"] = "SPHERE"
+                feature["params"] = {
+                    "radius": sphere.Radius(),
+                    "center": occ_pnt_to_tuple(sphere.Position().Location())
+                }
+            elif surf_type == GeomAbs_Torus:
+                torus = adaptor.Torus()
+                feature["type"] = "TORUS"
+                feature["params"] = {
+                    "major_radius": torus.MajorRadius(),
+                    "minor_radius": torus.MinorRadius(),
+                    "axis": occ_ax3_to_dict(torus.Position())
+                }
+            elif surf_type in (GeomAbs_BSplineSurface, GeomAbs_BezierSurface):
+                feature["type"] = "FREEFORM_SURFACE"
+                feature["params"] = {"note": "NURBS/Bezier. Требует аппроксимации для чертежей."}
+            else:
+                feature["type"] = "COMPLEX_SURFACE"
+                feature["params"] = {"occ_type": str(surf_type)}
+
+            features.append(feature)
+        except Exception as e:
+            print(f"  [ERROR] Ошибка обработки грани #{face_idx}: {type(e).__name__} | {e}")
+            
+        face_idx += 1
+        explorer.Next()
+        
+    return features
+
+def analyze_edges(shape):
+
+    explorer = TopExp_Explorer(shape, TopAbs_EDGE)
+
+    edges = []
+    edge_idx = 0
+
+    while explorer.More():
+
+        try:
+
+            edge = CAST_TO_EDGE(explorer.Current())
+
+            adaptor = BRepAdaptor_Curve(edge)
+
+            curve_type = adaptor.GetType()
+
+            edge_data = {
+                "edge_id": edge_idx,
+                "type": "UNKNOWN",
+                "params": {}
+            }
+            length = GCPnts_AbscissaPoint.Length(adaptor)
+
+            # ---------------------------------
+            # Линия
+            # ---------------------------------
+
+            if curve_type == GeomAbs_Line:
+
+                p1 = adaptor.Value(adaptor.FirstParameter())
+                p2 = adaptor.Value(adaptor.LastParameter())
+
+                edge_data["type"] = "LINE"
+
+                edge_data["params"] = {
+                    "start": occ_pnt_to_tuple(p1),
+                    "end": occ_pnt_to_tuple(p2),
+                    "length": length
+                }
+
+            # ---------------------------------
+            # Окружность
+            # ---------------------------------
+
+            elif curve_type == GeomAbs_Circle:
+
+                circle = adaptor.Circle()
+
+                edge_data["type"] = "CIRCLE"
+
+                edge_data["params"] = {
+                    "center":
+                        occ_pnt_to_tuple(
+                            circle.Location()
+                        ),
+                    "radius":
+                        circle.Radius(),
+                    "axis":
+                        occ_ax3_to_dict(
+                            circle.Position()
+                        ),
+                    "length": length
+                }
+
+            # ---------------------------------
+            # Эллипс
+            # ---------------------------------
+
+            elif curve_type == GeomAbs_Ellipse:
+
+                ellipse = adaptor.Ellipse()
+
+                edge_data["type"] = "ELLIPSE"
+
+                edge_data["params"] = {
+                    "center":
+                        occ_pnt_to_tuple(
+                            ellipse.Location()
+                        ),
+                    "major_radius":
+                        ellipse.MajorRadius(),
+                    "minor_radius":
+                        ellipse.MinorRadius(),
+                }
+
+            edges.append(edge_data)
+
+        except Exception as e:
+
+            print(
+                f"[EDGE ERROR] #{edge_idx}: "
+                f"{type(e).__name__}: {e}"
+            )
+
+        edge_idx += 1
+        explorer.Next()
+
+    return edges
+
+def save_drafting_data(
+        features,
+        edges,
+        bbox,
+        output_file="geometry/drafting_data.json"):
+
+    result = {
+        "bbox": bbox,
+        "faces": features,
+        "edges": edges
+    }
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        json.dump(
+            result,
+            f,
+            indent=2,
+            ensure_ascii=False
+        )
+
+    print(f"Данные сохранены в {output_file}")
+
+    return output_file
+
+if __name__ == "__main__":
+    STEP_FILE = "C:\\Users\\Yascher\\Desktop\\Практика\\top_systems_pract\\geometry\\round_list_with_holes.stp"
+    
+    try:
+        if not os.path.exists(STEP_FILE):
+            raise FileNotFoundError(f"Файл не найден по пути: {STEP_FILE}")
+            
+        print("Загрузка STEP-файла...")
+        reader = STEPControl_Reader()
+        
+        Interface_Static.SetIVal("read.step.shape.healing", 1)
+        Interface_Static.SetRVal("read.step.precision.val", 0.001)
+        
+
+        read_status = reader.ReadFile(STEP_FILE)
+        if read_status != 1:
+            raise RuntimeError(f"Ошибка чтения файла. Статус OCCT: {read_status}")
+        print("Файл успешно прочитан в память.")
+
+        print("Трансфер данных в топологическое дерево...")
+        try:
+            reader.TransferRoots()
+        except Exception as e:
+            raise RuntimeError(f"Crash/ошибка при TransferRoots: {e}") from e
+            
+        shape = reader.OneShape()
+        if shape.IsNull():
+            raise RuntimeError("Получен пустой (Null) Shape. Вероятно, файл пуст или содержит только мета-данные.")
+        print(f"Shape загружен. Тип: {shape.ShapeType()}")
+        bbox = compute_bbox(shape)
+
+        print("\nBOUNDING BOX:")
+        for k, v in bbox.items():
+            print(f"{k}: {v:.3f}")
+
+        print("Анализ геометрии граней...")
+        features = analyze_faces_for_drafting(shape)
+        print(f"Обработано граней: {len(features)}")
+
+        edges = analyze_edges(shape)
+
+        print(f"Обработано ребер: {len(edges)}")
+        
+        type_counts = {}
+        for f in features:
+            type_counts[f["type"]] = type_counts.get(f["type"], 0) + 1
+        print("ТИПЫ ПОВЕРХНОСТЕЙ:", type_counts)
+        
+        print("Сохранение данных...")
+        save_drafting_data(
+            features,
+            edges,
+            bbox
+        )
+        print("Скрипт завершён успешно.")
+        
+    except FileNotFoundError as e:
+        print(f"Ошибка доступа к файлу: {e}")
+        sys.exit(1)
+    except RuntimeError as e:
+        print(f"Критическая ошибка ядра OCCT: {e}")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Неожиданная ошибка: {type(e).__name__}: {e}")
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
+# .\parser\drawing_schema.py
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from enum import Enum
+from typing import Any, Mapping
+
+
+class ViewName(str, Enum):
+    TOP = "TOP"
+    FRONT = "FRONT"
+    LEFT = "LEFT"
+
+
+class ProjectionPlane(str, Enum):
+    XY = "XY"
+    XZ = "XZ"
+    YZ = "YZ"
+
+
+class AxisName(str, Enum):
+    X = "X"
+    Y = "Y"
+    Z = "Z"
+
+
+class SurfaceType(str, Enum):
+    PLANE = "PLANE"
+    CYLINDER = "CYLINDER"
+    CONE = "CONE"
+    SPHERE = "SPHERE"
+    TORUS = "TORUS"
+    FREEFORM_SURFACE = "FREEFORM_SURFACE"
+    COMPLEX_SURFACE = "COMPLEX_SURFACE"
+    UNKNOWN = "UNKNOWN"
+
+
+class Orientation(str, Enum):
+    FORWARD = "FORWARD"
+    REVERSED = "REVERSED"
+
+
+class PartType(str, Enum):
+    CYLINDER = "CYLINDER"
+    DOUBLE_CYLINDER = "DOUBLE_CYLINDER"
+    PLATE = "PLATE"
+    ROUND_PLATE_WITH_HOLES = "ROUND_PLATE_WITH_HOLES"
+    RECTANGULAR_PLATE_WITH_HOLES = "RECTANGULAR_PLATE_WITH_HOLES"
+    OTHER = "OTHER"
+
+
+class FeatureType(str, Enum):
+    HOLE = "HOLE"
+    OUTER_CYLINDER = "OUTER_CYLINDER"
+
+
+class ShapeType(str, Enum):
+    CIRCLE = "CIRCLE"
+    RECTANGLE = "RECTANGLE"
+
+
+class DimensionType(str, Enum):
+    LINEAR = "LINEAR"
+    DIAMETER = "DIAMETER"
+    RADIUS = "RADIUS"
+    CENTER_MARK = "CENTER_MARK"
+
+
+@dataclass(frozen=True)
+class ViewSpec:
+    name: ViewName
+    projection_plane: ProjectionPlane
+    visible_axes: tuple[AxisName, AxisName]
+    coordinate_indices: tuple[int, int]
+
+
+VIEW_SPECS: Mapping[ViewName, ViewSpec] = {
+    ViewName.TOP: ViewSpec(
+        name=ViewName.TOP,
+        projection_plane=ProjectionPlane.XY,
+        visible_axes=(AxisName.X, AxisName.Y),
+        coordinate_indices=(0, 1),
+    ),
+    ViewName.FRONT: ViewSpec(
+        name=ViewName.FRONT,
+        projection_plane=ProjectionPlane.XZ,
+        visible_axes=(AxisName.X, AxisName.Z),
+        coordinate_indices=(0, 2),
+    ),
+    ViewName.LEFT: ViewSpec(
+        name=ViewName.LEFT,
+        projection_plane=ProjectionPlane.YZ,
+        visible_axes=(AxisName.Y, AxisName.Z),
+        coordinate_indices=(1, 2),
+    ),
+}
+
+
+def enum_value(value: Any) -> Any:
+    if isinstance(value, Enum):
+        return value.value
+    return value
+
+
+def to_jsonable(value: Any) -> Any:
+    if isinstance(value, Enum):
+        return value.value
+    if isinstance(value, tuple):
+        return [to_jsonable(item) for item in value]
+    if isinstance(value, list):
+        return [to_jsonable(item) for item in value]
+    if isinstance(value, dict):
+        return {str(enum_value(key)): to_jsonable(item) for key, item in value.items()}
+    return value
+
+
+def _float_or_default(value: Any, default: float = 0.0) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
+@dataclass(frozen=True)
+class BBox3D:
+    xmin: float = 0.0
+    ymin: float = 0.0
+    zmin: float = 0.0
+    xmax: float = 0.0
+    ymax: float = 0.0
+    zmax: float = 0.0
+
+    @classmethod
+    def from_mapping(cls, raw: Mapping[str, Any] | None) -> "BBox3D":
+        raw = raw or {}
+        xmin = _float_or_default(raw.get("xmin"))
+        ymin = _float_or_default(raw.get("ymin"))
+        zmin = _float_or_default(raw.get("zmin"))
+
+        dx = _float_or_default(raw.get("dx"))
+        dy = _float_or_default(raw.get("dy"))
+        dz = _float_or_default(raw.get("dz"))
+
+        xmax = _float_or_default(raw.get("xmax"), xmin + dx)
+        ymax = _float_or_default(raw.get("ymax"), ymin + dy)
+        zmax = _float_or_default(raw.get("zmax"), zmin + dz)
+
+        return cls(
+            xmin=xmin,
+            ymin=ymin,
+            zmin=zmin,
+            xmax=xmax,
+            ymax=ymax,
+            zmax=zmax,
+        )
+
+    @property
+    def dx(self) -> float:
+        return self.xmax - self.xmin
+
+    @property
+    def dy(self) -> float:
+        return self.ymax - self.ymin
+
+    @property
+    def dz(self) -> float:
+        return self.zmax - self.zmin
+
+    @property
+    def minimum(self) -> list[float]:
+        return [self.xmin, self.ymin, self.zmin]
+
+    @property
+    def maximum(self) -> list[float]:
+        return [self.xmax, self.ymax, self.zmax]
+
+    @property
+    def size(self) -> list[float]:
+        return [self.dx, self.dy, self.dz]
+
+    @property
+    def center(self) -> list[float]:
+        return [
+            (self.xmin + self.xmax) / 2.0,
+            (self.ymin + self.ymax) / 2.0,
+            (self.zmin + self.zmax) / 2.0,
+        ]
+
+    def view_bbox(self, view: ViewName) -> "ViewBBox2D":
+        spec = VIEW_SPECS[view]
+        first, second = spec.coordinate_indices
+        minimum = self.minimum
+        maximum = self.maximum
+        return ViewBBox2D(
+            minimum=[minimum[first], minimum[second]],
+            maximum=[maximum[first], maximum[second]],
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "min": self.minimum,
+            "max": self.maximum,
+            "size": self.size,
+            "center": self.center,
+        }
+
+
+@dataclass(frozen=True)
+class ViewBBox2D:
+    minimum: list[float]
+    maximum: list[float]
+
+    @property
+    def size(self) -> list[float]:
+        return [
+            self.maximum[0] - self.minimum[0],
+            self.maximum[1] - self.minimum[1],
+        ]
+
+    @property
+    def center(self) -> list[float]:
+        return [
+            (self.minimum[0] + self.maximum[0]) / 2.0,
+            (self.minimum[1] + self.maximum[1]) / 2.0,
+        ]
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "min": list(self.minimum),
+            "max": list(self.maximum),
+            "size": self.size,
+            "center": self.center,
+        }
+
+
+@dataclass(frozen=True)
+class Feature3D:
+    id: str
+    type: FeatureType
+    shape: ShapeType
+    center_3d: list[float]
+    axis_direction: list[float]
+    radius: float
+    diameter: float
+    height: float
+    source_face_id: int | None
+    orientation: Orientation
+    projections: Mapping[str, Any] = field(default_factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "id": self.id,
+            "type": self.type.value,
+            "shape": self.shape.value,
+            "center_3d": list(self.center_3d),
+            "axis_direction": list(self.axis_direction),
+            "radius": self.radius,
+            "diameter": self.diameter,
+            "height": self.height,
+            "source_face_id": self.source_face_id,
+            "orientation": self.orientation.value,
+            "projections": to_jsonable(dict(self.projections)),
+        }
+
+
+@dataclass(frozen=True)
+class Dimension:
+    id: str
+    type: DimensionType
+    name: str
+    value: float
+    view: ViewName
+    target_feature_id: str | None
+    points: Mapping[str, Any]
+    placement_hint: str
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "id": self.id,
+            "type": self.type.value,
+            "name": self.name,
+            "value": self.value,
+            "view": self.view.value,
+            "target_feature_id": self.target_feature_id,
+            "points": to_jsonable(dict(self.points)),
+            "placement_hint": self.placement_hint,
+        }
+
+
+@dataclass(frozen=True)
+class DrawingView:
+    name: ViewName
+    projection_plane: ProjectionPlane
+    visible_axes: list[AxisName]
+    origin_3d: list[float]
+    view_bbox_2d: ViewBBox2D
+    outline: Mapping[str, Any]
+    features: list[Mapping[str, Any]]
+    anchor_points: Mapping[str, Any]
+    dimensions: list[Dimension]
+    notes: list[str] = field(default_factory=list)
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "name": self.name.value,
+            "projection_plane": self.projection_plane.value,
+            "visible_axes": [axis.value for axis in self.visible_axes],
+            "origin_3d": list(self.origin_3d),
+            "view_bbox_2d": self.view_bbox_2d.to_dict(),
+            "outline": to_jsonable(dict(self.outline)),
+            "features": to_jsonable(list(self.features)),
+            "anchor_points": to_jsonable(dict(self.anchor_points)),
+            "dimensions": [dimension.to_dict() for dimension in self.dimensions],
+            "notes": list(self.notes),
+        }
+# .\parser\generate_drawing_config.py
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+
+try:
+    from .drawing_config_generator import DEFAULT_UNITS, generate_drawing_config_file
+except ImportError:  # pragma: no cover - used when running as a script from parser/
+    from drawing_config_generator import DEFAULT_UNITS, generate_drawing_config_file
+
+
+def parse_args() -> argparse.Namespace:
+    parser_dir = Path(__file__).resolve().parent
+    parser = argparse.ArgumentParser(
+        description="Generate drawing_config.json from parser/drafting_data.json."
+    )
+    parser.add_argument(
+        "-i",
+        "--input",
+        default=parser_dir / "drafting_data.json",
+        type=Path,
+        help="Path to drafting_data.json.",
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        default=parser_dir / "drawing_config.json",
+        type=Path,
+        help="Path for generated drawing_config.json.",
+    )
+    parser.add_argument(
+        "--units",
+        default=DEFAULT_UNITS,
+        help="Units label to store in drawing_config.json.",
+    )
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    generate_drawing_config_file(
+        input_path=args.input,
+        output_path=args.output,
+        units=args.units,
+    )
+    print(f"DONE -> {args.output}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+# .\parser\drawing_config_generator.py
+from __future__ import annotations
+
+import json
+from collections import Counter
+from collections.abc import Sequence
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Mapping
+
+try:
+    from .drawing_schema import (
+        BBox3D,
+        Dimension,
+        DimensionType,
+        DrawingView,
+        Feature3D,
+        FeatureType,
+        Orientation,
+        PartType,
+        ShapeType,
+        SurfaceType,
+        VIEW_SPECS,
+        ViewName,
+        to_jsonable,
+    )
+except ImportError:  # pragma: no cover - used when running as a script from parser/
+    from drawing_schema import (
+        BBox3D,
+        Dimension,
+        DimensionType,
+        DrawingView,
+        Feature3D,
+        FeatureType,
+        Orientation,
+        PartType,
+        ShapeType,
+        SurfaceType,
+        VIEW_SPECS,
+        ViewName,
+        to_jsonable,
+    )
+
+
+SCHEMA_VERSION = "1.0"
+DEFAULT_UNITS = "mm"
+ROUND_BBOX_TOLERANCE = 0.15
+THIN_PLATE_RATIO = 0.2
+
+
+@dataclass(frozen=True)
+class CylinderData:
+    face_id: int | None
+    radius: float
+    height: float
+    center: list[float]
+    axis_direction: list[float]
+    orientation: Orientation
+
+    @property
+    def diameter(self) -> float:
+        return 2.0 * self.radius
+
+
+def _as_mapping(value: Any) -> Mapping[str, Any]:
+    if isinstance(value, Mapping):
+        return value
+    return {}
+
+
+def _as_float(value: Any, default: float = 0.0) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def _as_int_or_none(value: Any) -> int | None:
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _as_point(value: Any, default: Sequence[float], length: int) -> list[float]:
+    if not isinstance(value, Sequence) or isinstance(value, (str, bytes)):
+        return [float(item) for item in default[:length]]
+
+    result = [_as_float(item) for item in list(value)[:length]]
+    while len(result) < length:
+        result.append(float(default[len(result)]))
+    return result
+
+
+def _normalize_orientation(value: Any) -> Orientation:
+    try:
+        return Orientation(str(value).upper())
+    except ValueError:
+        return Orientation.FORWARD
+
+
+def _normalize_surface_type(value: Any) -> str:
+    if value is None:
+        return SurfaceType.UNKNOWN.value
+    return str(value).upper()
+
+
+def project_point(point_3d: Sequence[float], view: ViewName) -> list[float]:
+    point = _as_point(point_3d, [0.0, 0.0, 0.0], 3)
+    first, second = VIEW_SPECS[view].coordinate_indices
+    return [point[first], point[second]]
+
+
+def circle_anchor_points(center: Sequence[float], radius: float) -> dict[str, list[float]]:
+    center_2d = _as_point(center, [0.0, 0.0], 2)
+    x, y = center_2d
+    return {
+        "center": [x, y],
+        "left": [x - radius, y],
+        "right": [x + radius, y],
+        "top": [x, y + radius],
+        "bottom": [x, y - radius],
+    }
+
+
+class DraftingPartClassifier:
+    def __init__(self, bbox: BBox3D, faces: Sequence[Mapping[str, Any]]):
+        self.bbox = bbox
+        self.faces = faces
+
+    def extract_features(self) -> dict[str, Any]:
+        surface_counts = Counter(
+            _normalize_surface_type(face.get("type")) for face in self.faces
+        )
+        cylinders = [
+            cylinder
+            for face in self.faces
+            if (cylinder := cylinder_from_face(face, self.bbox)) is not None
+        ]
+        holes = [
+            cylinder
+            for cylinder in cylinders
+            if cylinder.orientation == Orientation.REVERSED
+        ]
+        outer_cylinders = [
+            cylinder
+            for cylinder in cylinders
+            if cylinder.orientation == Orientation.FORWARD
+        ]
+
+        return {
+            "planes": surface_counts[SurfaceType.PLANE.value],
+            "cylinders": len(cylinders),
+            "cones": surface_counts[SurfaceType.CONE.value],
+            "holes": holes,
+            "outer_cylinders": outer_cylinders,
+            "all_cylinders": cylinders,
+        }
+
+    def is_round_plate(self) -> bool:
+        dx = abs(self.bbox.dx)
+        dy = abs(self.bbox.dy)
+        max_xy = max(dx, dy)
+        if max_xy <= 0.0:
+            return False
+        return abs(dx - dy) / max_xy < ROUND_BBOX_TOLERANCE
+
+    def is_thin_plate(self) -> bool:
+        dx = abs(self.bbox.dx)
+        dy = abs(self.bbox.dy)
+        dz = abs(self.bbox.dz)
+        min_xy = min(dx, dy)
+        if min_xy <= 0.0:
+            return False
+        return dz < THIN_PLATE_RATIO * min_xy
+
+    def classify(self) -> PartType:
+        features = self.extract_features()
+
+        planes = features["planes"]
+        holes_count = len(features["holes"])
+        outer_count = len(features["outer_cylinders"])
+        cones = features["cones"]
+
+        if outer_count == 1 and holes_count == 0 and planes <= 3:
+            return PartType.CYLINDER
+
+        if outer_count >= 2:
+            radii = sorted(
+                (cylinder.radius for cylinder in features["outer_cylinders"]),
+                reverse=True,
+            )
+            if len(radii) >= 2 and radii[1] > 0.3 * radii[0]:
+                return PartType.DOUBLE_CYLINDER
+
+        if holes_count == 0 and outer_count == 0 and self.is_thin_plate():
+            return PartType.PLATE
+
+        if holes_count > 0:
+            if self.is_round_plate():
+                return PartType.ROUND_PLATE_WITH_HOLES
+            if planes >= 6:
+                return PartType.RECTANGULAR_PLATE_WITH_HOLES
+
+        if self.is_thin_plate() and cones == 0:
+            return PartType.PLATE
+
+        return PartType.OTHER
+
+
+def cylinder_from_face(
+    face: Mapping[str, Any],
+    bbox: BBox3D,
+) -> CylinderData | None:
+    if _normalize_surface_type(face.get("type")) != SurfaceType.CYLINDER.value:
+        return None
+
+    params = _as_mapping(face.get("params"))
+    axis = _as_mapping(params.get("axis"))
+
+    return CylinderData(
+        face_id=_as_int_or_none(face.get("face_id")),
+        radius=_as_float(params.get("radius")),
+        height=_as_float(params.get("height"), bbox.dz),
+        center=_as_point(axis.get("location"), bbox.center, 3),
+        axis_direction=_as_point(axis.get("axis_direction"), [0.0, 0.0, 1.0], 3),
+        orientation=_normalize_orientation(params.get("orientation")),
+    )
+
+
+class DrawingConfigGenerator:
+    def __init__(
+        self,
+        drafting_data: Mapping[str, Any],
+        source: str = "drafting_data.json",
+        units: str = DEFAULT_UNITS,
+    ):
+        self.drafting_data = _as_mapping(drafting_data)
+        self.source = source
+        self.units = units
+        self.bbox = BBox3D.from_mapping(_as_mapping(self.drafting_data.get("bbox")))
+        self.faces = self._faces_from_data()
+        self.cylinders = [
+            cylinder
+            for face in self.faces
+            if (cylinder := cylinder_from_face(face, self.bbox)) is not None
+        ]
+        self.part_type = DraftingPartClassifier(self.bbox, self.faces).classify()
+
+    def generate(self) -> dict[str, Any]:
+        features_3d = self._build_features_3d()
+        views = {
+            view.value: self._build_view(view, features_3d).to_dict()
+            for view in ViewName
+        }
+
+        return to_jsonable(
+            {
+                "schema_version": SCHEMA_VERSION,
+                "source": self.source,
+                "units": self.units,
+                "part_type": self.part_type.value,
+                "bbox_3d": self.bbox.to_dict(),
+                "views": views,
+                "features_3d": features_3d,
+                "generation_hints_for_csharp": self._generation_hints(),
+            }
+        )
+
+    def _faces_from_data(self) -> list[Mapping[str, Any]]:
+        faces = self.drafting_data.get("faces")
+        if not isinstance(faces, Sequence) or isinstance(faces, (str, bytes)):
+            return []
+        return [_as_mapping(face) for face in faces]
+
+    def _build_features_3d(self) -> list[dict[str, Any]]:
+        features: list[dict[str, Any]] = []
+
+        holes = [
+            cylinder
+            for cylinder in self.cylinders
+            if cylinder.orientation == Orientation.REVERSED
+        ]
+        outer_cylinders = [
+            cylinder
+            for cylinder in self.cylinders
+            if cylinder.orientation == Orientation.FORWARD
+        ]
+
+        for index, cylinder in enumerate(holes, start=1):
+            features.append(
+                self._feature_from_cylinder(
+                    cylinder=cylinder,
+                    feature_id=f"hole_{index}",
+                    feature_type=FeatureType.HOLE,
+                )
+            )
+
+        for index, cylinder in enumerate(outer_cylinders, start=1):
+            features.append(
+                self._feature_from_cylinder(
+                    cylinder=cylinder,
+                    feature_id=f"outer_cylinder_{index}",
+                    feature_type=FeatureType.OUTER_CYLINDER,
+                )
+            )
+
+        return features
+
+    def _feature_from_cylinder(
+        self,
+        cylinder: CylinderData,
+        feature_id: str,
+        feature_type: FeatureType,
+    ) -> dict[str, Any]:
+        projections = {
+            view.value: self._circular_projection(cylinder.center, cylinder.radius, view)
+            for view in ViewName
+        }
+
+        feature = Feature3D(
+            id=feature_id,
+            type=feature_type,
+            shape=ShapeType.CIRCLE,
+            center_3d=cylinder.center,
+            axis_direction=cylinder.axis_direction,
+            radius=cylinder.radius,
+            diameter=cylinder.diameter,
+            height=cylinder.height,
+            source_face_id=cylinder.face_id,
+            orientation=cylinder.orientation,
+            projections=projections,
+        )
+        return feature.to_dict()
+
+    def _circular_projection(
+        self,
+        center_3d: Sequence[float],
+        radius: float,
+        view: ViewName,
+    ) -> dict[str, Any]:
+        center = project_point(center_3d, view)
+        anchors = circle_anchor_points(center, radius)
+        return {
+            "center": center,
+            "radius": radius,
+            "diameter": 2.0 * radius,
+            "anchor_points": anchors,
+            "centerlines": [
+                {
+                    "id": "horizontal",
+                    "start": anchors["left"],
+                    "end": anchors["right"],
+                },
+                {
+                    "id": "vertical",
+                    "start": anchors["bottom"],
+                    "end": anchors["top"],
+                },
+            ],
+        }
+
+    def _build_view(
+        self,
+        view: ViewName,
+        features_3d: Sequence[Mapping[str, Any]],
+    ) -> DrawingView:
+        spec = VIEW_SPECS[view]
+        view_bbox = self.bbox.view_bbox(view)
+
+        return DrawingView(
+            name=view,
+            projection_plane=spec.projection_plane,
+            visible_axes=list(spec.visible_axes),
+            origin_3d=self.bbox.minimum,
+            view_bbox_2d=view_bbox,
+            outline=self._outline_for_view(view),
+            features=self._features_for_view(view, features_3d),
+            anchor_points=self._anchor_points_for_view(view_bbox),
+            dimensions=self._dimensions_for_view(view, features_3d),
+            notes=[],
+        )
+
+    def _outline_for_view(self, view: ViewName) -> dict[str, Any]:
+        view_bbox = self.bbox.view_bbox(view)
+        min_x, min_y = view_bbox.minimum
+        max_x, max_y = view_bbox.maximum
+
+        if view == ViewName.TOP and self._is_round_bbox_xy():
+            radius = max(abs(self.bbox.dx), abs(self.bbox.dy)) / 2.0
+            return {
+                "type": ShapeType.CIRCLE.value,
+                "source": "bbox_xy",
+                "center": view_bbox.center,
+                "radius": radius,
+                "diameter": 2.0 * radius,
+            }
+
+        return {
+            "type": ShapeType.RECTANGLE.value,
+            "source": f"bbox_{VIEW_SPECS[view].projection_plane.value.lower()}",
+            "points": [
+                [min_x, min_y],
+                [max_x, min_y],
+                [max_x, max_y],
+                [min_x, max_y],
+            ],
+        }
+
+    def _is_round_bbox_xy(self) -> bool:
+        dx = abs(self.bbox.dx)
+        dy = abs(self.bbox.dy)
+        max_xy = max(dx, dy)
+        if max_xy <= 0.0:
+            return False
+        return abs(dx - dy) / max_xy < ROUND_BBOX_TOLERANCE
+
+    def _anchor_points_for_view(self, view_bbox: Any) -> dict[str, Any]:
+        min_x, min_y = view_bbox.minimum
+        max_x, max_y = view_bbox.maximum
+        center_x, center_y = view_bbox.center
+
+        return {
+            "bbox_min": [min_x, min_y],
+            "bbox_max": [max_x, max_y],
+            "bbox_center": [center_x, center_y],
+            "left_mid": [min_x, center_y],
+            "right_mid": [max_x, center_y],
+            "top_mid": [center_x, max_y],
+            "bottom_mid": [center_x, min_y],
+            "corners": {
+                "bottom_left": [min_x, min_y],
+                "bottom_right": [max_x, min_y],
+                "top_right": [max_x, max_y],
+                "top_left": [min_x, max_y],
+            },
+        }
+
+    def _features_for_view(
+        self,
+        view: ViewName,
+        features_3d: Sequence[Mapping[str, Any]],
+    ) -> list[dict[str, Any]]:
+        view_features = []
+        for feature in features_3d:
+            if feature.get("type") != FeatureType.HOLE.value:
+                continue
+
+            projections = _as_mapping(feature.get("projections"))
+            projection = _as_mapping(projections.get(view.value))
+            view_features.append(
+                {
+                    "id": feature.get("id"),
+                    "type": feature.get("type"),
+                    "shape": feature.get("shape"),
+                    "source_feature_3d": feature.get("id"),
+                    "center_3d": feature.get("center_3d", []),
+                    "axis_direction": feature.get("axis_direction", []),
+                    "center": projection.get("center", [0.0, 0.0]),
+                    "radius": projection.get("radius", 0.0),
+                    "diameter": projection.get("diameter", 0.0),
+                    "anchor_points": projection.get("anchor_points", {}),
+                    "centerlines": projection.get("centerlines", []),
+                    "style_hint": (
+                        "visible_circle" if view == ViewName.TOP else "projected_centerline"
+                    ),
+                }
+            )
+        return view_features
+
+    def _dimensions_for_view(
+        self,
+        view: ViewName,
+        features_3d: Sequence[Mapping[str, Any]],
+    ) -> list[Dimension]:
+        dimensions: list[Dimension] = []
+
+        if view == ViewName.TOP:
+            dimensions.extend(self._top_global_dimensions())
+            dimensions.extend(self._hole_dimensions(features_3d))
+            dimensions.extend(self._outer_cylinder_top_dimensions(features_3d))
+
+        if view == ViewName.FRONT:
+            dimensions.append(self._thickness_dimension(ViewName.FRONT))
+            dimensions.extend(self._outer_cylinder_height_dimensions(view, features_3d))
+
+        if view == ViewName.LEFT:
+            dimensions.append(self._thickness_dimension(ViewName.LEFT))
+            dimensions.extend(self._outer_cylinder_height_dimensions(view, features_3d))
+
+        return dimensions
+
+    def _top_global_dimensions(self) -> list[Dimension]:
+        return [
+            Dimension(
+                id="dim_length_top",
+                type=DimensionType.LINEAR,
+                name="LENGTH",
+                value=abs(self.bbox.dx),
+                view=ViewName.TOP,
+                target_feature_id=None,
+                points={
+                    "start": [self.bbox.xmin, self.bbox.ymin],
+                    "end": [self.bbox.xmax, self.bbox.ymin],
+                },
+                placement_hint="below_outline",
+            ),
+            Dimension(
+                id="dim_width_top",
+                type=DimensionType.LINEAR,
+                name="WIDTH",
+                value=abs(self.bbox.dy),
+                view=ViewName.TOP,
+                target_feature_id=None,
+                points={
+                    "start": [self.bbox.xmin, self.bbox.ymin],
+                    "end": [self.bbox.xmin, self.bbox.ymax],
+                },
+                placement_hint="left_of_outline",
+            ),
+        ]
+
+    def _thickness_dimension(self, view: ViewName) -> Dimension:
+        if view == ViewName.FRONT:
+            start = [self.bbox.xmax, self.bbox.zmin]
+            end = [self.bbox.xmax, self.bbox.zmax]
+            dimension_id = "dim_thickness_front"
+        else:
+            start = [self.bbox.ymax, self.bbox.zmin]
+            end = [self.bbox.ymax, self.bbox.zmax]
+            dimension_id = "dim_thickness_left"
+
+        return Dimension(
+            id=dimension_id,
+            type=DimensionType.LINEAR,
+            name="THICKNESS",
+            value=abs(self.bbox.dz),
+            view=view,
+            target_feature_id=None,
+            points={"start": start, "end": end},
+            placement_hint="right_of_outline",
+        )
+
+    def _hole_dimensions(
+        self,
+        features_3d: Sequence[Mapping[str, Any]],
+    ) -> list[Dimension]:
+        dimensions: list[Dimension] = []
+        for feature in features_3d:
+            if feature.get("type") != FeatureType.HOLE.value:
+                continue
+            feature_id = str(feature.get("id"))
+            projection = _as_mapping(
+                _as_mapping(feature.get("projections")).get(ViewName.TOP.value)
+            )
+            center = _as_point(projection.get("center"), [0.0, 0.0], 2)
+            diameter = _as_float(feature.get("diameter"))
+            radius = _as_float(feature.get("radius"))
+
+            dimensions.append(
+                Dimension(
+                    id=f"dim_{feature_id}_diameter",
+                    type=DimensionType.DIAMETER,
+                    name="HOLE_DIAMETER",
+                    value=diameter,
+                    view=ViewName.TOP,
+                    target_feature_id=feature_id,
+                    points={"center": center},
+                    placement_hint="near_hole",
+                )
+            )
+            dimensions.append(
+                Dimension(
+                    id=f"dim_{feature_id}_center_mark",
+                    type=DimensionType.CENTER_MARK,
+                    name="HOLE_CENTER_MARK",
+                    value=0.0,
+                    view=ViewName.TOP,
+                    target_feature_id=feature_id,
+                    points={
+                        "center": center,
+                        "horizontal": {
+                            "start": [center[0] - radius, center[1]],
+                            "end": [center[0] + radius, center[1]],
+                        },
+                        "vertical": {
+                            "start": [center[0], center[1] - radius],
+                            "end": [center[0], center[1] + radius],
+                        },
+                    },
+                    placement_hint="at_hole_center",
+                )
+            )
+            dimensions.extend(self._hole_coordinate_dimensions(feature_id, center))
+
+        return dimensions
+
+    def _hole_coordinate_dimensions(
+        self,
+        feature_id: str,
+        center: Sequence[float],
+    ) -> list[Dimension]:
+        center_2d = _as_point(center, [0.0, 0.0], 2)
+        x, y = center_2d
+        return [
+            Dimension(
+                id=f"dim_{feature_id}_center_x",
+                type=DimensionType.LINEAR,
+                name="HOLE_CENTER_X",
+                value=x - self.bbox.xmin,
+                view=ViewName.TOP,
+                target_feature_id=feature_id,
+                points={
+                    "start": [self.bbox.xmin, y],
+                    "end": [x, y],
+                    "reference": "left_bbox_edge",
+                },
+                placement_hint="horizontal_hole_location",
+            ),
+            Dimension(
+                id=f"dim_{feature_id}_center_y",
+                type=DimensionType.LINEAR,
+                name="HOLE_CENTER_Y",
+                value=y - self.bbox.ymin,
+                view=ViewName.TOP,
+                target_feature_id=feature_id,
+                points={
+                    "start": [x, self.bbox.ymin],
+                    "end": [x, y],
+                    "reference": "bottom_bbox_edge",
+                },
+                placement_hint="vertical_hole_location",
+            ),
+        ]
+
+    def _outer_cylinder_top_dimensions(
+        self,
+        features_3d: Sequence[Mapping[str, Any]],
+    ) -> list[Dimension]:
+        dimensions: list[Dimension] = []
+        for feature in features_3d:
+            if feature.get("type") != FeatureType.OUTER_CYLINDER.value:
+                continue
+
+            feature_id = str(feature.get("id"))
+            projection = _as_mapping(
+                _as_mapping(feature.get("projections")).get(ViewName.TOP.value)
+            )
+            dimensions.append(
+                Dimension(
+                    id=f"dim_{feature_id}_diameter_top",
+                    type=DimensionType.DIAMETER,
+                    name="OUTER_DIAMETER",
+                    value=_as_float(feature.get("diameter")),
+                    view=ViewName.TOP,
+                    target_feature_id=feature_id,
+                    points={"center": projection.get("center", [0.0, 0.0])},
+                    placement_hint="outside_outline",
+                )
+            )
+
+        return dimensions
+
+    def _outer_cylinder_height_dimensions(
+        self,
+        view: ViewName,
+        features_3d: Sequence[Mapping[str, Any]],
+    ) -> list[Dimension]:
+        dimensions: list[Dimension] = []
+        for feature in features_3d:
+            if feature.get("type") != FeatureType.OUTER_CYLINDER.value:
+                continue
+
+            feature_id = str(feature.get("id"))
+            center_3d = _as_point(feature.get("center_3d"), self.bbox.center, 3)
+            start_3d = [center_3d[0], center_3d[1], self.bbox.zmin]
+            end_3d = [center_3d[0], center_3d[1], self.bbox.zmax]
+            dimensions.append(
+                Dimension(
+                    id=f"dim_{feature_id}_height_{view.value.lower()}",
+                    type=DimensionType.LINEAR,
+                    name="CYLINDER_HEIGHT",
+                    value=_as_float(feature.get("height"), abs(self.bbox.dz)),
+                    view=view,
+                    target_feature_id=feature_id,
+                    points={
+                        "start": project_point(start_3d, view),
+                        "end": project_point(end_3d, view),
+                    },
+                    placement_hint="along_cylinder_axis",
+                )
+            )
+
+        return dimensions
+
+    def _generation_hints(self) -> dict[str, Any]:
+        return {
+            "recommended_order": [
+                "draw_view_outlines",
+                "draw_centerlines",
+                "draw_holes",
+                "draw_dimensions",
+                "draw_annotations",
+            ],
+            "coordinate_system": (
+                "Use projected 2D coordinates from each view. "
+                "Do not recompute 3D geometry in C#."
+            ),
+            "projection_rules": {
+                "TOP": "[x, y, z] -> [x, y]",
+                "FRONT": "[x, y, z] -> [x, z]",
+                "LEFT": "[x, y, z] -> [y, z]",
+            },
+            "units": self.units,
+        }
+
+
+def build_drawing_config(
+    drafting_data: Mapping[str, Any],
+    source: str = "drafting_data.json",
+    units: str = DEFAULT_UNITS,
+) -> dict[str, Any]:
+    return DrawingConfigGenerator(
+        drafting_data=drafting_data,
+        source=source,
+        units=units,
+    ).generate()
+
+
+def load_drafting_data(input_path: str | Path) -> dict[str, Any]:
+    with Path(input_path).open("r", encoding="utf-8") as file:
+        data = json.load(file)
+    return dict(_as_mapping(data))
+
+
+def write_drawing_config(config: Mapping[str, Any], output_path: str | Path) -> None:
+    with Path(output_path).open("w", encoding="utf-8") as file:
+        json.dump(to_jsonable(dict(config)), file, indent=2, ensure_ascii=False)
+        file.write("\n")
+
+
+def generate_drawing_config_file(
+    input_path: str | Path,
+    output_path: str | Path,
+    units: str = DEFAULT_UNITS,
+) -> dict[str, Any]:
+    input_path = Path(input_path)
+    data = load_drafting_data(input_path)
+    config = build_drawing_config(data, source=input_path.name, units=units)
+    write_drawing_config(config, output_path)
+    return config
+# parser.py — описание
+
+Скрипт читает STEP-файл, определяет тип каждой поверхности (плоскость, цилиндр, конус и т.д.) и выгружает точные параметры в JSON для дальнейшего использования.
+
+---
+
+## Как запустить
+```yaml
+name: cad_ml
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy
+  - pythonocc-core=7.9.3
+  - pyvista      # Визуализация
+  - trimesh      # Работа с мешами
+  - pandas       # Таблицы данных
+  - tqdm         # Прогресс-бары
+  - pip
+  - pip:
+      - ezdxf    # Экспорт в DXF (через pip, так как в conda может не быть свежей версии)
+```
+```bash
+# 1. Активировать окружение 
+conda activate cad_ml
+
+# 2. Запустить скрипт
+python parser.py
+```
+
+**Что произойдёт:**
+1. Скрипт найдёт файл  в текущей папке
+2. Проанализирует все грани
+3. Выведет в консоль краткую статистику:
+   ```
+   Загрузка STEP...
+   Анализ геометрии граней...
+   Обработано граней: 8
+   ТИПЫ ПОВЕРХНОСТИ: {'PLANE': 6, 'CYLINDER': 2}
+   Данные сохранены в drafting_data.json
+   ```
+4. Сохранит результат в `drafting_data.json`
+
+---
+
+## Что на выходе: `drafting_data.json`
+
+Файл содержит список всех граней. Пример одной записи:
+
+```json
+{
+  "face_id": 2,
+  "type": "CYLINDER",
+  "params": {
+    "radius": 12.5,
+    "axis": {
+      "location": [0.0, 0.0, 0.0],
+      "axis_direction": [0.0, 0.0, 1.0]
+    }
+  },
+  "area": 1570.8
+}
+```
+
+### Простая расшифровка полей:
+
+| Поле | Что значит | Зачем нужно |
+|------|-----------|-------------|
+| `face_id` | Номер грани (0, 1, 2...) | Чтобы ссылаться на конкретную грань в других скриптах |
+| `type` | Тип поверхности | Понимать, как отображать на чертеже: окружность (цилиндр), прямоугольник (плоскость) и т.д. |
+| `params.radius` | Радиус (для цилиндров, сфер, конусов) | Для простановки размеров `Ø25`, `R10` |
+| `params.axis` | Ось + точка привязки | Чтобы провести осевую линию в нужном месте |
+| `params.normal` | Вектор нормали (для плоскостей) | Чтобы понять, куда "смотрит" грань — для выбора вида на чертеже |
+| `area` | Площадь грани в мм² | Чтобы отфильтровать мелкие фаски или технологические элементы |
+
+---
+
+## Типы поверхностей, которые распознаёт скрипт 
+
+| Тип | Что это | Пример на чертеже |
+|-----|---------|------------------|
+| `PLANE` | Плоскость | Прямоугольник, вид спереди/сбоку |
+| `CYLINDER` | Цилиндр | Отверстие `Ø12`, вал, посадочная поверхность |
+| `CONE` | Конус | Коническая посадка, фаска под углом |
+| `SPHERE` | Сфера | Сферическая головка, шарнир |
+| `TORUS` | Тор (бублик) | Галтель, канавка под уплотнение |
+| `FREEFORM_SURFACE` | Свободная форма (NURBS) | Сложная криволинейная поверхность — требует ручной доработки |
+| `COMPLEX_SURFACE` | Не распознано | Стоит проверить модель на ошибки импорта |
+
+---
+
+## Что нужно для работы
+
+| Зависимость | Как проверить |
+|-------------|--------------|
+| Конда-окружение `cad_ml` | `conda env list` — должно быть в списке |
+| `pythonocc-core` | `python -c "import OCC; print(OCC.__version__)"` |
+| Файл `.step` | Должен лежать в папке со скриптом или указать путь в коде |
+
+> **Важно**: Скрипт работает только с **аналитическими поверхностями**. Если модель импортирована из полигонального формата (STL, OBJ) или содержит только меши — все грани будут определены как `COMPLEX_SURFACE`.
+
+---
+
+## Если что-то пошло не так
+
+| Симптом | Возможная причина | Что делать |
+|---------|------------------|------------|
+| `ImportError: No module named 'OCC'` | Не активировано окружение | `conda activate cad_ml` |
+| `File not found: test1.step` | Нет входного файла | Положите STEP-файл в папку или поправьте путь в коде |
+| Все грани `COMPLEX_SURFACE` | Модель содержит только меши | Проверить исходный CAD: экспортировать STEP с сохранением аналитики |
+| Скрипт «висит» на больших файлах | Много граней (>10 000) | Это нормально; можно добавить фильтрацию по `area` для ускорения |
+
+---

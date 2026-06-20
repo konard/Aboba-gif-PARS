@@ -1,3 +1,4 @@
+# .\parser\generate_drawing_config.py
 from __future__ import annotations
 
 import argparse
