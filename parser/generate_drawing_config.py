@@ -37,6 +37,14 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def display_path(path: Path) -> str:
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(Path.cwd().resolve()))
+    except ValueError:
+        return str(resolved)
+
+
 def main() -> int:
     args = parse_args()
     generate_drawing_config_file(
@@ -44,7 +52,7 @@ def main() -> int:
         output_path=args.output,
         units=args.units,
     )
-    print(f"DONE -> {args.output}")
+    print(f"Drawing config saved to {display_path(args.output)}")
     return 0
 
 

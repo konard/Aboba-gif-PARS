@@ -4,6 +4,7 @@ import sys
 import json
 import faulthandler
 import numpy as np
+from pathlib import Path
 
 from OCC.Core.BRepGProp import brepgprop
 from OCC.Core.GProp import GProp_GProps
@@ -34,6 +35,8 @@ CAST_TO_EDGE = getattr(
 )
 
 faulthandler.enable()
+
+DEFAULT_DRAFTING_DATA_PATH = Path(__file__).resolve().parent / "drafting_data.json"
 
 _cast_funcs = [name for name in dir(TopoDS_module) if 'face' in name.lower()]
 if not _cast_funcs:
@@ -295,7 +298,9 @@ def save_drafting_data(
         features,
         edges,
         bbox,
-        output_file="geometry/drafting_data.json"):
+        output_file=None):
+    output_path = Path(output_file) if output_file is not None else DEFAULT_DRAFTING_DATA_PATH
+    output_path.parent.mkdir(parents=True, exist_ok=True)
 
     result = {
         "bbox": bbox,
@@ -303,7 +308,7 @@ def save_drafting_data(
         "edges": edges
     }
 
-    with open(output_file, "w", encoding="utf-8") as f:
+    with output_path.open("w", encoding="utf-8") as f:
         json.dump(
             result,
             f,
@@ -311,9 +316,9 @@ def save_drafting_data(
             ensure_ascii=False
         )
 
-    print(f"Данные сохранены в {output_file}")
+    print(f"Данные сохранены в {output_path}")
 
-    return output_file
+    return str(output_path)
 
 if __name__ == "__main__":
     STEP_FILE = "C:\\Users\\Yascher\\Desktop\\Практика\\top_systems_pract\\geometry\\round_list_with_holes.stp"
