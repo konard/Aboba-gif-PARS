@@ -58,7 +58,7 @@
       },
       "outline": {
         "type": "CIRCLE",
-        "source": "bbox_xy",
+        "source": "classified_round_outline",
         "center": [
           0.0,
           0.0
@@ -72,16 +72,6 @@
           "type": "HOLE",
           "shape": "CIRCLE",
           "source_feature_3d": "hole_1",
-          "center_3d": [
-            -53.138147554,
-            -18.144543633,
-            0.0
-          ],
-          "axis_direction": [
-            0.0,
-            -0.0,
-            1.0
-          ],
           "center": [
             -53.138147554,
             -18.144543633
@@ -134,23 +124,23 @@
               ]
             }
           ],
-          "style_hint": "visible_circle"
-        },
-        {
-          "id": "hole_2",
-          "type": "HOLE",
-          "shape": "CIRCLE",
-          "source_feature_3d": "hole_2",
+          "style_hint": "visible_circle",
           "center_3d": [
-            -38.160423278,
-            78.930109929,
+            -53.138147554,
+            -18.144543633,
             0.0
           ],
           "axis_direction": [
             0.0,
             -0.0,
             1.0
-          ],
+          ]
+        },
+        {
+          "id": "hole_2",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_2",
           "center": [
             -38.160423278,
             78.930109929
@@ -203,23 +193,23 @@
               ]
             }
           ],
-          "style_hint": "visible_circle"
-        },
-        {
-          "id": "hole_3",
-          "type": "HOLE",
-          "shape": "CIRCLE",
-          "source_feature_3d": "hole_3",
+          "style_hint": "visible_circle",
           "center_3d": [
-            59.342806812,
-            -21.861447684,
+            -38.160423278,
+            78.930109929,
             0.0
           ],
           "axis_direction": [
             0.0,
             -0.0,
             1.0
-          ],
+          ]
+        },
+        {
+          "id": "hole_3",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_3",
           "center": [
             59.342806812,
             -21.861447684
@@ -272,23 +262,23 @@
               ]
             }
           ],
-          "style_hint": "visible_circle"
-        },
-        {
-          "id": "hole_4",
-          "type": "HOLE",
-          "shape": "CIRCLE",
-          "source_feature_3d": "hole_4",
+          "style_hint": "visible_circle",
           "center_3d": [
-            -122.803774096,
-            -100.443165698,
+            59.342806812,
+            -21.861447684,
             0.0
           ],
           "axis_direction": [
             0.0,
             -0.0,
             1.0
-          ],
+          ]
+        },
+        {
+          "id": "hole_4",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_4",
           "center": [
             -122.803774096,
             -100.443165698
@@ -341,23 +331,23 @@
               ]
             }
           ],
-          "style_hint": "visible_circle"
-        },
-        {
-          "id": "hole_5",
-          "type": "HOLE",
-          "shape": "CIRCLE",
-          "source_feature_3d": "hole_5",
+          "style_hint": "visible_circle",
           "center_3d": [
-            93.765992107,
-            106.083771434,
+            -122.803774096,
+            -100.443165698,
             0.0
           ],
           "axis_direction": [
             0.0,
             -0.0,
             1.0
-          ],
+          ]
+        },
+        {
+          "id": "hole_5",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_5",
           "center": [
             93.765992107,
             106.083771434
@@ -410,23 +400,23 @@
               ]
             }
           ],
-          "style_hint": "visible_circle"
-        },
-        {
-          "id": "hole_6",
-          "type": "HOLE",
-          "shape": "CIRCLE",
-          "source_feature_3d": "hole_6",
+          "style_hint": "visible_circle",
           "center_3d": [
-            107.16669538,
-            -67.802595687,
+            93.765992107,
+            106.083771434,
             0.0
           ],
           "axis_direction": [
             0.0,
             -0.0,
             1.0
-          ],
+          ]
+        },
+        {
+          "id": "hole_6",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_6",
           "center": [
             107.16669538,
             -67.802595687
@@ -479,23 +469,23 @@
               ]
             }
           ],
-          "style_hint": "visible_circle"
-        },
-        {
-          "id": "hole_7",
-          "type": "HOLE",
-          "shape": "CIRCLE",
-          "source_feature_3d": "hole_7",
+          "style_hint": "visible_circle",
           "center_3d": [
-            -138.107800979,
-            59.203984815,
+            107.16669538,
+            -67.802595687,
             0.0
           ],
           "axis_direction": [
             0.0,
             -0.0,
             1.0
-          ],
+          ]
+        },
+        {
+          "id": "hole_7",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_7",
           "center": [
             -138.107800979,
             59.203984815
@@ -548,23 +538,23 @@
               ]
             }
           ],
-          "style_hint": "visible_circle"
-        },
-        {
-          "id": "hole_8",
-          "type": "HOLE",
-          "shape": "CIRCLE",
-          "source_feature_3d": "hole_8",
+          "style_hint": "visible_circle",
           "center_3d": [
-            4.513942176,
-            -101.256613859,
+            -138.107800979,
+            59.203984815,
             0.0
           ],
           "axis_direction": [
             0.0,
             -0.0,
             1.0
-          ],
+          ]
+        },
+        {
+          "id": "hole_8",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_8",
           "center": [
             4.513942176,
             -101.256613859
@@ -617,23 +607,23 @@
               ]
             }
           ],
-          "style_hint": "visible_circle"
-        },
-        {
-          "id": "hole_9",
-          "type": "HOLE",
-          "shape": "CIRCLE",
-          "source_feature_3d": "hole_9",
+          "style_hint": "visible_circle",
           "center_3d": [
-            -11.718365287,
-            -183.62404443,
+            4.513942176,
+            -101.256613859,
             0.0
           ],
           "axis_direction": [
             0.0,
             -0.0,
             1.0
-          ],
+          ]
+        },
+        {
+          "id": "hole_9",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_9",
           "center": [
             -11.718365287,
             -183.62404443
@@ -686,7 +676,17 @@
               ]
             }
           ],
-          "style_hint": "visible_circle"
+          "style_hint": "visible_circle",
+          "center_3d": [
+            -11.718365287,
+            -183.62404443,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ]
         }
       ],
       "anchor_points": {
@@ -735,6 +735,24 @@
             -250.0000001,
             250.0000001
           ]
+        },
+        "midpoints": {
+          "left_mid": [
+            -250.0000001,
+            0.0
+          ],
+          "right_mid": [
+            250.0000001,
+            0.0
+          ],
+          "top_mid": [
+            0.0,
+            250.0000001
+          ],
+          "bottom_mid": [
+            0.0,
+            -250.0000001
+          ]
         }
       },
       "dimensions": [
@@ -777,56 +795,6 @@
           "placement_hint": "left_of_outline"
         },
         {
-          "id": "dim_hole_1_diameter",
-          "type": "DIAMETER",
-          "name": "HOLE_DIAMETER",
-          "value": 10.0,
-          "view": "TOP",
-          "target_feature_id": "hole_1",
-          "points": {
-            "center": [
-              -53.138147554,
-              -18.144543633
-            ]
-          },
-          "placement_hint": "near_hole"
-        },
-        {
-          "id": "dim_hole_1_center_mark",
-          "type": "CENTER_MARK",
-          "name": "HOLE_CENTER_MARK",
-          "value": 0.0,
-          "view": "TOP",
-          "target_feature_id": "hole_1",
-          "points": {
-            "center": [
-              -53.138147554,
-              -18.144543633
-            ],
-            "horizontal": {
-              "start": [
-                -58.138147554,
-                -18.144543633
-              ],
-              "end": [
-                -48.138147554,
-                -18.144543633
-              ]
-            },
-            "vertical": {
-              "start": [
-                -53.138147554,
-                -23.144543633
-              ],
-              "end": [
-                -53.138147554,
-                -13.144543633000001
-              ]
-            }
-          },
-          "placement_hint": "at_hole_center"
-        },
-        {
           "id": "dim_hole_1_center_x",
           "type": "LINEAR",
           "name": "HOLE_CENTER_X",
@@ -865,56 +833,6 @@
             "reference": "bottom_bbox_edge"
           },
           "placement_hint": "vertical_hole_location"
-        },
-        {
-          "id": "dim_hole_2_diameter",
-          "type": "DIAMETER",
-          "name": "HOLE_DIAMETER",
-          "value": 10.0,
-          "view": "TOP",
-          "target_feature_id": "hole_2",
-          "points": {
-            "center": [
-              -38.160423278,
-              78.930109929
-            ]
-          },
-          "placement_hint": "near_hole"
-        },
-        {
-          "id": "dim_hole_2_center_mark",
-          "type": "CENTER_MARK",
-          "name": "HOLE_CENTER_MARK",
-          "value": 0.0,
-          "view": "TOP",
-          "target_feature_id": "hole_2",
-          "points": {
-            "center": [
-              -38.160423278,
-              78.930109929
-            ],
-            "horizontal": {
-              "start": [
-                -43.160423278,
-                78.930109929
-              ],
-              "end": [
-                -33.160423278,
-                78.930109929
-              ]
-            },
-            "vertical": {
-              "start": [
-                -38.160423278,
-                73.930109929
-              ],
-              "end": [
-                -38.160423278,
-                83.930109929
-              ]
-            }
-          },
-          "placement_hint": "at_hole_center"
         },
         {
           "id": "dim_hole_2_center_x",
@@ -957,56 +875,6 @@
           "placement_hint": "vertical_hole_location"
         },
         {
-          "id": "dim_hole_3_diameter",
-          "type": "DIAMETER",
-          "name": "HOLE_DIAMETER",
-          "value": 10.0,
-          "view": "TOP",
-          "target_feature_id": "hole_3",
-          "points": {
-            "center": [
-              59.342806812,
-              -21.861447684
-            ]
-          },
-          "placement_hint": "near_hole"
-        },
-        {
-          "id": "dim_hole_3_center_mark",
-          "type": "CENTER_MARK",
-          "name": "HOLE_CENTER_MARK",
-          "value": 0.0,
-          "view": "TOP",
-          "target_feature_id": "hole_3",
-          "points": {
-            "center": [
-              59.342806812,
-              -21.861447684
-            ],
-            "horizontal": {
-              "start": [
-                54.342806812,
-                -21.861447684
-              ],
-              "end": [
-                64.34280681199999,
-                -21.861447684
-              ]
-            },
-            "vertical": {
-              "start": [
-                59.342806812,
-                -26.861447684
-              ],
-              "end": [
-                59.342806812,
-                -16.861447684
-              ]
-            }
-          },
-          "placement_hint": "at_hole_center"
-        },
-        {
           "id": "dim_hole_3_center_x",
           "type": "LINEAR",
           "name": "HOLE_CENTER_X",
@@ -1045,56 +913,6 @@
             "reference": "bottom_bbox_edge"
           },
           "placement_hint": "vertical_hole_location"
-        },
-        {
-          "id": "dim_hole_4_diameter",
-          "type": "DIAMETER",
-          "name": "HOLE_DIAMETER",
-          "value": 10.0,
-          "view": "TOP",
-          "target_feature_id": "hole_4",
-          "points": {
-            "center": [
-              -122.803774096,
-              -100.443165698
-            ]
-          },
-          "placement_hint": "near_hole"
-        },
-        {
-          "id": "dim_hole_4_center_mark",
-          "type": "CENTER_MARK",
-          "name": "HOLE_CENTER_MARK",
-          "value": 0.0,
-          "view": "TOP",
-          "target_feature_id": "hole_4",
-          "points": {
-            "center": [
-              -122.803774096,
-              -100.443165698
-            ],
-            "horizontal": {
-              "start": [
-                -127.803774096,
-                -100.443165698
-              ],
-              "end": [
-                -117.803774096,
-                -100.443165698
-              ]
-            },
-            "vertical": {
-              "start": [
-                -122.803774096,
-                -105.443165698
-              ],
-              "end": [
-                -122.803774096,
-                -95.443165698
-              ]
-            }
-          },
-          "placement_hint": "at_hole_center"
         },
         {
           "id": "dim_hole_4_center_x",
@@ -1137,56 +955,6 @@
           "placement_hint": "vertical_hole_location"
         },
         {
-          "id": "dim_hole_5_diameter",
-          "type": "DIAMETER",
-          "name": "HOLE_DIAMETER",
-          "value": 10.0,
-          "view": "TOP",
-          "target_feature_id": "hole_5",
-          "points": {
-            "center": [
-              93.765992107,
-              106.083771434
-            ]
-          },
-          "placement_hint": "near_hole"
-        },
-        {
-          "id": "dim_hole_5_center_mark",
-          "type": "CENTER_MARK",
-          "name": "HOLE_CENTER_MARK",
-          "value": 0.0,
-          "view": "TOP",
-          "target_feature_id": "hole_5",
-          "points": {
-            "center": [
-              93.765992107,
-              106.083771434
-            ],
-            "horizontal": {
-              "start": [
-                88.765992107,
-                106.083771434
-              ],
-              "end": [
-                98.765992107,
-                106.083771434
-              ]
-            },
-            "vertical": {
-              "start": [
-                93.765992107,
-                101.083771434
-              ],
-              "end": [
-                93.765992107,
-                111.083771434
-              ]
-            }
-          },
-          "placement_hint": "at_hole_center"
-        },
-        {
           "id": "dim_hole_5_center_x",
           "type": "LINEAR",
           "name": "HOLE_CENTER_X",
@@ -1225,56 +993,6 @@
             "reference": "bottom_bbox_edge"
           },
           "placement_hint": "vertical_hole_location"
-        },
-        {
-          "id": "dim_hole_6_diameter",
-          "type": "DIAMETER",
-          "name": "HOLE_DIAMETER",
-          "value": 10.0,
-          "view": "TOP",
-          "target_feature_id": "hole_6",
-          "points": {
-            "center": [
-              107.16669538,
-              -67.802595687
-            ]
-          },
-          "placement_hint": "near_hole"
-        },
-        {
-          "id": "dim_hole_6_center_mark",
-          "type": "CENTER_MARK",
-          "name": "HOLE_CENTER_MARK",
-          "value": 0.0,
-          "view": "TOP",
-          "target_feature_id": "hole_6",
-          "points": {
-            "center": [
-              107.16669538,
-              -67.802595687
-            ],
-            "horizontal": {
-              "start": [
-                102.16669538,
-                -67.802595687
-              ],
-              "end": [
-                112.16669538,
-                -67.802595687
-              ]
-            },
-            "vertical": {
-              "start": [
-                107.16669538,
-                -72.802595687
-              ],
-              "end": [
-                107.16669538,
-                -62.80259568699999
-              ]
-            }
-          },
-          "placement_hint": "at_hole_center"
         },
         {
           "id": "dim_hole_6_center_x",
@@ -1317,56 +1035,6 @@
           "placement_hint": "vertical_hole_location"
         },
         {
-          "id": "dim_hole_7_diameter",
-          "type": "DIAMETER",
-          "name": "HOLE_DIAMETER",
-          "value": 10.0,
-          "view": "TOP",
-          "target_feature_id": "hole_7",
-          "points": {
-            "center": [
-              -138.107800979,
-              59.203984815
-            ]
-          },
-          "placement_hint": "near_hole"
-        },
-        {
-          "id": "dim_hole_7_center_mark",
-          "type": "CENTER_MARK",
-          "name": "HOLE_CENTER_MARK",
-          "value": 0.0,
-          "view": "TOP",
-          "target_feature_id": "hole_7",
-          "points": {
-            "center": [
-              -138.107800979,
-              59.203984815
-            ],
-            "horizontal": {
-              "start": [
-                -143.107800979,
-                59.203984815
-              ],
-              "end": [
-                -133.107800979,
-                59.203984815
-              ]
-            },
-            "vertical": {
-              "start": [
-                -138.107800979,
-                54.203984815
-              ],
-              "end": [
-                -138.107800979,
-                64.203984815
-              ]
-            }
-          },
-          "placement_hint": "at_hole_center"
-        },
-        {
           "id": "dim_hole_7_center_x",
           "type": "LINEAR",
           "name": "HOLE_CENTER_X",
@@ -1407,56 +1075,6 @@
           "placement_hint": "vertical_hole_location"
         },
         {
-          "id": "dim_hole_8_diameter",
-          "type": "DIAMETER",
-          "name": "HOLE_DIAMETER",
-          "value": 10.0,
-          "view": "TOP",
-          "target_feature_id": "hole_8",
-          "points": {
-            "center": [
-              4.513942176,
-              -101.256613859
-            ]
-          },
-          "placement_hint": "near_hole"
-        },
-        {
-          "id": "dim_hole_8_center_mark",
-          "type": "CENTER_MARK",
-          "name": "HOLE_CENTER_MARK",
-          "value": 0.0,
-          "view": "TOP",
-          "target_feature_id": "hole_8",
-          "points": {
-            "center": [
-              4.513942176,
-              -101.256613859
-            ],
-            "horizontal": {
-              "start": [
-                -0.4860578240000004,
-                -101.256613859
-              ],
-              "end": [
-                9.513942176,
-                -101.256613859
-              ]
-            },
-            "vertical": {
-              "start": [
-                4.513942176,
-                -106.256613859
-              ],
-              "end": [
-                4.513942176,
-                -96.256613859
-              ]
-            }
-          },
-          "placement_hint": "at_hole_center"
-        },
-        {
           "id": "dim_hole_8_center_x",
           "type": "LINEAR",
           "name": "HOLE_CENTER_X",
@@ -1495,56 +1113,6 @@
             "reference": "bottom_bbox_edge"
           },
           "placement_hint": "vertical_hole_location"
-        },
-        {
-          "id": "dim_hole_9_diameter",
-          "type": "DIAMETER",
-          "name": "HOLE_DIAMETER",
-          "value": 10.0,
-          "view": "TOP",
-          "target_feature_id": "hole_9",
-          "points": {
-            "center": [
-              -11.718365287,
-              -183.62404443
-            ]
-          },
-          "placement_hint": "near_hole"
-        },
-        {
-          "id": "dim_hole_9_center_mark",
-          "type": "CENTER_MARK",
-          "name": "HOLE_CENTER_MARK",
-          "value": 0.0,
-          "view": "TOP",
-          "target_feature_id": "hole_9",
-          "points": {
-            "center": [
-              -11.718365287,
-              -183.62404443
-            ],
-            "horizontal": {
-              "start": [
-                -16.718365286999997,
-                -183.62404443
-              ],
-              "end": [
-                -6.718365286999999,
-                -183.62404443
-              ]
-            },
-            "vertical": {
-              "start": [
-                -11.718365287,
-                -188.62404443
-              ],
-              "end": [
-                -11.718365287,
-                -178.62404443
-              ]
-            }
-          },
-          "placement_hint": "at_hole_center"
         },
         {
           "id": "dim_hole_9_center_x",
@@ -1600,6 +1168,276 @@
             ]
           },
           "placement_hint": "outside_outline"
+        },
+        {
+          "id": "dim_hole_1_diameter_TOP",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_1",
+          "points": {
+            "center": [
+              -53.138147554,
+              -18.144543633
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "center_mark_hole_1_TOP",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER",
+          "value": null,
+          "view": "TOP",
+          "target_feature_id": "hole_1",
+          "points": {
+            "center": [
+              -53.138147554,
+              -18.144543633
+            ]
+          },
+          "placement_hint": "at_center"
+        },
+        {
+          "id": "dim_hole_2_diameter_TOP",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_2",
+          "points": {
+            "center": [
+              -38.160423278,
+              78.930109929
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "center_mark_hole_2_TOP",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER",
+          "value": null,
+          "view": "TOP",
+          "target_feature_id": "hole_2",
+          "points": {
+            "center": [
+              -38.160423278,
+              78.930109929
+            ]
+          },
+          "placement_hint": "at_center"
+        },
+        {
+          "id": "dim_hole_3_diameter_TOP",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_3",
+          "points": {
+            "center": [
+              59.342806812,
+              -21.861447684
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "center_mark_hole_3_TOP",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER",
+          "value": null,
+          "view": "TOP",
+          "target_feature_id": "hole_3",
+          "points": {
+            "center": [
+              59.342806812,
+              -21.861447684
+            ]
+          },
+          "placement_hint": "at_center"
+        },
+        {
+          "id": "dim_hole_4_diameter_TOP",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_4",
+          "points": {
+            "center": [
+              -122.803774096,
+              -100.443165698
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "center_mark_hole_4_TOP",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER",
+          "value": null,
+          "view": "TOP",
+          "target_feature_id": "hole_4",
+          "points": {
+            "center": [
+              -122.803774096,
+              -100.443165698
+            ]
+          },
+          "placement_hint": "at_center"
+        },
+        {
+          "id": "dim_hole_5_diameter_TOP",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_5",
+          "points": {
+            "center": [
+              93.765992107,
+              106.083771434
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "center_mark_hole_5_TOP",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER",
+          "value": null,
+          "view": "TOP",
+          "target_feature_id": "hole_5",
+          "points": {
+            "center": [
+              93.765992107,
+              106.083771434
+            ]
+          },
+          "placement_hint": "at_center"
+        },
+        {
+          "id": "dim_hole_6_diameter_TOP",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_6",
+          "points": {
+            "center": [
+              107.16669538,
+              -67.802595687
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "center_mark_hole_6_TOP",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER",
+          "value": null,
+          "view": "TOP",
+          "target_feature_id": "hole_6",
+          "points": {
+            "center": [
+              107.16669538,
+              -67.802595687
+            ]
+          },
+          "placement_hint": "at_center"
+        },
+        {
+          "id": "dim_hole_7_diameter_TOP",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_7",
+          "points": {
+            "center": [
+              -138.107800979,
+              59.203984815
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "center_mark_hole_7_TOP",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER",
+          "value": null,
+          "view": "TOP",
+          "target_feature_id": "hole_7",
+          "points": {
+            "center": [
+              -138.107800979,
+              59.203984815
+            ]
+          },
+          "placement_hint": "at_center"
+        },
+        {
+          "id": "dim_hole_8_diameter_TOP",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_8",
+          "points": {
+            "center": [
+              4.513942176,
+              -101.256613859
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "center_mark_hole_8_TOP",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER",
+          "value": null,
+          "view": "TOP",
+          "target_feature_id": "hole_8",
+          "points": {
+            "center": [
+              4.513942176,
+              -101.256613859
+            ]
+          },
+          "placement_hint": "at_center"
+        },
+        {
+          "id": "dim_hole_9_diameter_TOP",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_9",
+          "points": {
+            "center": [
+              -11.718365287,
+              -183.62404443
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "center_mark_hole_9_TOP",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER",
+          "value": null,
+          "view": "TOP",
+          "target_feature_id": "hole_9",
+          "points": {
+            "center": [
+              -11.718365287,
+              -183.62404443
+            ]
+          },
+          "placement_hint": "at_center"
         }
       ],
       "notes": []
@@ -1658,10 +1496,16 @@
       },
       "features": [
         {
-          "id": "hole_1",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_1_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_1",
+          "center": [
+            -53.138147554,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             -53.138147554,
             -18.144543633,
@@ -1671,66 +1515,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            -53.138147554,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -53.138147554,
-              0.0
-            ],
-            "left": [
-              -58.138147554,
-              0.0
-            ],
-            "right": [
-              -48.138147554,
-              0.0
-            ],
-            "top": [
-              -53.138147554,
-              5.0
-            ],
-            "bottom": [
-              -53.138147554,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -58.138147554,
-                0.0
-              ],
-              "end": [
-                -48.138147554,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -53.138147554,
-                -5.0
-              ],
-              "end": [
-                -53.138147554,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_2",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_2_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_2",
+          "center": [
+            -38.160423278,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             -38.160423278,
             78.930109929,
@@ -1740,66 +1537,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            -38.160423278,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -38.160423278,
-              0.0
-            ],
-            "left": [
-              -43.160423278,
-              0.0
-            ],
-            "right": [
-              -33.160423278,
-              0.0
-            ],
-            "top": [
-              -38.160423278,
-              5.0
-            ],
-            "bottom": [
-              -38.160423278,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -43.160423278,
-                0.0
-              ],
-              "end": [
-                -33.160423278,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -38.160423278,
-                -5.0
-              ],
-              "end": [
-                -38.160423278,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_3",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_3_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_3",
+          "center": [
+            59.342806812,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             59.342806812,
             -21.861447684,
@@ -1809,66 +1559,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            59.342806812,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              59.342806812,
-              0.0
-            ],
-            "left": [
-              54.342806812,
-              0.0
-            ],
-            "right": [
-              64.34280681199999,
-              0.0
-            ],
-            "top": [
-              59.342806812,
-              5.0
-            ],
-            "bottom": [
-              59.342806812,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                54.342806812,
-                0.0
-              ],
-              "end": [
-                64.34280681199999,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                59.342806812,
-                -5.0
-              ],
-              "end": [
-                59.342806812,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_4",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_4_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_4",
+          "center": [
+            -122.803774096,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             -122.803774096,
             -100.443165698,
@@ -1878,66 +1581,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            -122.803774096,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -122.803774096,
-              0.0
-            ],
-            "left": [
-              -127.803774096,
-              0.0
-            ],
-            "right": [
-              -117.803774096,
-              0.0
-            ],
-            "top": [
-              -122.803774096,
-              5.0
-            ],
-            "bottom": [
-              -122.803774096,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -127.803774096,
-                0.0
-              ],
-              "end": [
-                -117.803774096,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -122.803774096,
-                -5.0
-              ],
-              "end": [
-                -122.803774096,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_5",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_5_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_5",
+          "center": [
+            93.765992107,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             93.765992107,
             106.083771434,
@@ -1947,66 +1603,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            93.765992107,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              93.765992107,
-              0.0
-            ],
-            "left": [
-              88.765992107,
-              0.0
-            ],
-            "right": [
-              98.765992107,
-              0.0
-            ],
-            "top": [
-              93.765992107,
-              5.0
-            ],
-            "bottom": [
-              93.765992107,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                88.765992107,
-                0.0
-              ],
-              "end": [
-                98.765992107,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                93.765992107,
-                -5.0
-              ],
-              "end": [
-                93.765992107,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_6",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_6_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_6",
+          "center": [
+            107.16669538,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             107.16669538,
             -67.802595687,
@@ -2016,66 +1625,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            107.16669538,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              107.16669538,
-              0.0
-            ],
-            "left": [
-              102.16669538,
-              0.0
-            ],
-            "right": [
-              112.16669538,
-              0.0
-            ],
-            "top": [
-              107.16669538,
-              5.0
-            ],
-            "bottom": [
-              107.16669538,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                102.16669538,
-                0.0
-              ],
-              "end": [
-                112.16669538,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                107.16669538,
-                -5.0
-              ],
-              "end": [
-                107.16669538,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_7",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_7_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_7",
+          "center": [
+            -138.107800979,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             -138.107800979,
             59.203984815,
@@ -2085,66 +1647,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            -138.107800979,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -138.107800979,
-              0.0
-            ],
-            "left": [
-              -143.107800979,
-              0.0
-            ],
-            "right": [
-              -133.107800979,
-              0.0
-            ],
-            "top": [
-              -138.107800979,
-              5.0
-            ],
-            "bottom": [
-              -138.107800979,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -143.107800979,
-                0.0
-              ],
-              "end": [
-                -133.107800979,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -138.107800979,
-                -5.0
-              ],
-              "end": [
-                -138.107800979,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_8",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_8_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_8",
+          "center": [
+            4.513942176,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             4.513942176,
             -101.256613859,
@@ -2154,66 +1669,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            4.513942176,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              4.513942176,
-              0.0
-            ],
-            "left": [
-              -0.4860578240000004,
-              0.0
-            ],
-            "right": [
-              9.513942176,
-              0.0
-            ],
-            "top": [
-              4.513942176,
-              5.0
-            ],
-            "bottom": [
-              4.513942176,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -0.4860578240000004,
-                0.0
-              ],
-              "end": [
-                9.513942176,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                4.513942176,
-                -5.0
-              ],
-              "end": [
-                4.513942176,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_9",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_9_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_9",
+          "center": [
+            -11.718365287,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             -11.718365287,
             -183.62404443,
@@ -2223,60 +1691,7 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            -11.718365287,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -11.718365287,
-              0.0
-            ],
-            "left": [
-              -16.718365286999997,
-              0.0
-            ],
-            "right": [
-              -6.718365286999999,
-              0.0
-            ],
-            "top": [
-              -11.718365287,
-              5.0
-            ],
-            "bottom": [
-              -11.718365287,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -16.718365286999997,
-                0.0
-              ],
-              "end": [
-                -6.718365286999999,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -11.718365287,
-                -5.0
-              ],
-              "end": [
-                -11.718365287,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         }
       ],
       "anchor_points": {
@@ -2325,6 +1740,24 @@
             -250.0000001,
             10.0000001
           ]
+        },
+        "midpoints": {
+          "left_mid": [
+            -250.0000001,
+            5.0
+          ],
+          "right_mid": [
+            250.0000001,
+            5.0
+          ],
+          "top_mid": [
+            0.0,
+            10.0000001
+          ],
+          "bottom_mid": [
+            0.0,
+            -1e-07
+          ]
         }
       },
       "dimensions": [
@@ -2337,15 +1770,15 @@
           "target_feature_id": null,
           "points": {
             "start": [
-              250.0000001,
+              -250.0000001,
               -1e-07
             ],
             "end": [
-              250.0000001,
+              -250.0000001,
               10.0000001
             ]
           },
-          "placement_hint": "right_of_outline"
+          "placement_hint": "left_of_outline"
         },
         {
           "id": "dim_outer_cylinder_1_height_front",
@@ -2367,7 +1800,17 @@
           "placement_hint": "along_cylinder_axis"
         }
       ],
-      "notes": []
+      "notes": [
+        "Hole hole_1 is not circular in FRONT view; represented as centerline projection.",
+        "Hole hole_2 is not circular in FRONT view; represented as centerline projection.",
+        "Hole hole_3 is not circular in FRONT view; represented as centerline projection.",
+        "Hole hole_4 is not circular in FRONT view; represented as centerline projection.",
+        "Hole hole_5 is not circular in FRONT view; represented as centerline projection.",
+        "Hole hole_6 is not circular in FRONT view; represented as centerline projection.",
+        "Hole hole_7 is not circular in FRONT view; represented as centerline projection.",
+        "Hole hole_8 is not circular in FRONT view; represented as centerline projection.",
+        "Hole hole_9 is not circular in FRONT view; represented as centerline projection."
+      ]
     },
     "LEFT": {
       "name": "LEFT",
@@ -2423,10 +1866,16 @@
       },
       "features": [
         {
-          "id": "hole_1",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_1_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_1",
+          "center": [
+            -18.144543633,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             -53.138147554,
             -18.144543633,
@@ -2436,66 +1885,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            -18.144543633,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -18.144543633,
-              0.0
-            ],
-            "left": [
-              -23.144543633,
-              0.0
-            ],
-            "right": [
-              -13.144543633000001,
-              0.0
-            ],
-            "top": [
-              -18.144543633,
-              5.0
-            ],
-            "bottom": [
-              -18.144543633,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -23.144543633,
-                0.0
-              ],
-              "end": [
-                -13.144543633000001,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -18.144543633,
-                -5.0
-              ],
-              "end": [
-                -18.144543633,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_2",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_2_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_2",
+          "center": [
+            78.930109929,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             -38.160423278,
             78.930109929,
@@ -2505,66 +1907,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            78.930109929,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              78.930109929,
-              0.0
-            ],
-            "left": [
-              73.930109929,
-              0.0
-            ],
-            "right": [
-              83.930109929,
-              0.0
-            ],
-            "top": [
-              78.930109929,
-              5.0
-            ],
-            "bottom": [
-              78.930109929,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                73.930109929,
-                0.0
-              ],
-              "end": [
-                83.930109929,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                78.930109929,
-                -5.0
-              ],
-              "end": [
-                78.930109929,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_3",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_3_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_3",
+          "center": [
+            -21.861447684,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             59.342806812,
             -21.861447684,
@@ -2574,66 +1929,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            -21.861447684,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -21.861447684,
-              0.0
-            ],
-            "left": [
-              -26.861447684,
-              0.0
-            ],
-            "right": [
-              -16.861447684,
-              0.0
-            ],
-            "top": [
-              -21.861447684,
-              5.0
-            ],
-            "bottom": [
-              -21.861447684,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -26.861447684,
-                0.0
-              ],
-              "end": [
-                -16.861447684,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -21.861447684,
-                -5.0
-              ],
-              "end": [
-                -21.861447684,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_4",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_4_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_4",
+          "center": [
+            -100.443165698,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             -122.803774096,
             -100.443165698,
@@ -2643,66 +1951,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            -100.443165698,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -100.443165698,
-              0.0
-            ],
-            "left": [
-              -105.443165698,
-              0.0
-            ],
-            "right": [
-              -95.443165698,
-              0.0
-            ],
-            "top": [
-              -100.443165698,
-              5.0
-            ],
-            "bottom": [
-              -100.443165698,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -105.443165698,
-                0.0
-              ],
-              "end": [
-                -95.443165698,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -100.443165698,
-                -5.0
-              ],
-              "end": [
-                -100.443165698,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_5",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_5_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_5",
+          "center": [
+            106.083771434,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             93.765992107,
             106.083771434,
@@ -2712,66 +1973,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            106.083771434,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              106.083771434,
-              0.0
-            ],
-            "left": [
-              101.083771434,
-              0.0
-            ],
-            "right": [
-              111.083771434,
-              0.0
-            ],
-            "top": [
-              106.083771434,
-              5.0
-            ],
-            "bottom": [
-              106.083771434,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                101.083771434,
-                0.0
-              ],
-              "end": [
-                111.083771434,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                106.083771434,
-                -5.0
-              ],
-              "end": [
-                106.083771434,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_6",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_6_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_6",
+          "center": [
+            -67.802595687,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             107.16669538,
             -67.802595687,
@@ -2781,66 +1995,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            -67.802595687,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -67.802595687,
-              0.0
-            ],
-            "left": [
-              -72.802595687,
-              0.0
-            ],
-            "right": [
-              -62.80259568699999,
-              0.0
-            ],
-            "top": [
-              -67.802595687,
-              5.0
-            ],
-            "bottom": [
-              -67.802595687,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -72.802595687,
-                0.0
-              ],
-              "end": [
-                -62.80259568699999,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -67.802595687,
-                -5.0
-              ],
-              "end": [
-                -67.802595687,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_7",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_7_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_7",
+          "center": [
+            59.203984815,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             -138.107800979,
             59.203984815,
@@ -2850,66 +2017,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            59.203984815,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              59.203984815,
-              0.0
-            ],
-            "left": [
-              54.203984815,
-              0.0
-            ],
-            "right": [
-              64.203984815,
-              0.0
-            ],
-            "top": [
-              59.203984815,
-              5.0
-            ],
-            "bottom": [
-              59.203984815,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                54.203984815,
-                0.0
-              ],
-              "end": [
-                64.203984815,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                59.203984815,
-                -5.0
-              ],
-              "end": [
-                59.203984815,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_8",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_8_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_8",
+          "center": [
+            -101.256613859,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             4.513942176,
             -101.256613859,
@@ -2919,66 +2039,19 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            -101.256613859,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -101.256613859,
-              0.0
-            ],
-            "left": [
-              -106.256613859,
-              0.0
-            ],
-            "right": [
-              -96.256613859,
-              0.0
-            ],
-            "top": [
-              -101.256613859,
-              5.0
-            ],
-            "bottom": [
-              -101.256613859,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -106.256613859,
-                0.0
-              ],
-              "end": [
-                -96.256613859,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -101.256613859,
-                -5.0
-              ],
-              "end": [
-                -101.256613859,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         },
         {
-          "id": "hole_9",
-          "type": "HOLE",
-          "shape": "CIRCLE",
+          "id": "hole_9_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
           "source_feature_3d": "hole_9",
+          "center": [
+            -183.62404443,
+            0.0
+          ],
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle.",
           "center_3d": [
             -11.718365287,
             -183.62404443,
@@ -2988,60 +2061,7 @@
             0.0,
             -0.0,
             1.0
-          ],
-          "center": [
-            -183.62404443,
-            0.0
-          ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -183.62404443,
-              0.0
-            ],
-            "left": [
-              -188.62404443,
-              0.0
-            ],
-            "right": [
-              -178.62404443,
-              0.0
-            ],
-            "top": [
-              -183.62404443,
-              5.0
-            ],
-            "bottom": [
-              -183.62404443,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -188.62404443,
-                0.0
-              ],
-              "end": [
-                -178.62404443,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -183.62404443,
-                -5.0
-              ],
-              "end": [
-                -183.62404443,
-                5.0
-              ]
-            }
-          ],
-          "style_hint": "projected_centerline"
+          ]
         }
       ],
       "anchor_points": {
@@ -3090,6 +2110,24 @@
             -250.0000001,
             10.0000001
           ]
+        },
+        "midpoints": {
+          "left_mid": [
+            -250.0000001,
+            5.0
+          ],
+          "right_mid": [
+            250.0000001,
+            5.0
+          ],
+          "top_mid": [
+            0.0,
+            10.0000001
+          ],
+          "bottom_mid": [
+            0.0,
+            -1e-07
+          ]
         }
       },
       "dimensions": [
@@ -3102,15 +2140,15 @@
           "target_feature_id": null,
           "points": {
             "start": [
-              250.0000001,
+              -250.0000001,
               -1e-07
             ],
             "end": [
-              250.0000001,
+              -250.0000001,
               10.0000001
             ]
           },
-          "placement_hint": "right_of_outline"
+          "placement_hint": "left_of_outline"
         },
         {
           "id": "dim_outer_cylinder_1_height_left",
@@ -3132,14 +2170,24 @@
           "placement_hint": "along_cylinder_axis"
         }
       ],
-      "notes": []
+      "notes": [
+        "Hole hole_1 is not circular in LEFT view; represented as centerline projection.",
+        "Hole hole_2 is not circular in LEFT view; represented as centerline projection.",
+        "Hole hole_3 is not circular in LEFT view; represented as centerline projection.",
+        "Hole hole_4 is not circular in LEFT view; represented as centerline projection.",
+        "Hole hole_5 is not circular in LEFT view; represented as centerline projection.",
+        "Hole hole_6 is not circular in LEFT view; represented as centerline projection.",
+        "Hole hole_7 is not circular in LEFT view; represented as centerline projection.",
+        "Hole hole_8 is not circular in LEFT view; represented as centerline projection.",
+        "Hole hole_9 is not circular in LEFT view; represented as centerline projection."
+      ]
     }
   },
   "features_3d": [
     {
       "id": "hole_1",
       "type": "HOLE",
-      "shape": "CIRCLE",
+      "shape": "CYLINDER",
       "center_3d": [
         -53.138147554,
         -18.144543633,
@@ -3157,6 +2205,10 @@
       "orientation": "REVERSED",
       "projections": {
         "TOP": {
+          "id": "hole_1",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_1",
           "center": [
             -53.138147554,
             -18.144543633
@@ -3208,122 +2260,40 @@
                 -13.144543633000001
               ]
             }
-          ]
+          ],
+          "style_hint": "visible_circle"
         },
         "FRONT": {
+          "id": "hole_1_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_1",
           "center": [
             -53.138147554,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -53.138147554,
-              0.0
-            ],
-            "left": [
-              -58.138147554,
-              0.0
-            ],
-            "right": [
-              -48.138147554,
-              0.0
-            ],
-            "top": [
-              -53.138147554,
-              5.0
-            ],
-            "bottom": [
-              -53.138147554,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -58.138147554,
-                0.0
-              ],
-              "end": [
-                -48.138147554,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -53.138147554,
-                -5.0
-              ],
-              "end": [
-                -53.138147554,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         },
         "LEFT": {
+          "id": "hole_1_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_1",
           "center": [
             -18.144543633,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -18.144543633,
-              0.0
-            ],
-            "left": [
-              -23.144543633,
-              0.0
-            ],
-            "right": [
-              -13.144543633000001,
-              0.0
-            ],
-            "top": [
-              -18.144543633,
-              5.0
-            ],
-            "bottom": [
-              -18.144543633,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -23.144543633,
-                0.0
-              ],
-              "end": [
-                -13.144543633000001,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -18.144543633,
-                -5.0
-              ],
-              "end": [
-                -18.144543633,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         }
-      }
+      },
+      "notes": []
     },
     {
       "id": "hole_2",
       "type": "HOLE",
-      "shape": "CIRCLE",
+      "shape": "CYLINDER",
       "center_3d": [
         -38.160423278,
         78.930109929,
@@ -3341,6 +2311,10 @@
       "orientation": "REVERSED",
       "projections": {
         "TOP": {
+          "id": "hole_2",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_2",
           "center": [
             -38.160423278,
             78.930109929
@@ -3392,122 +2366,40 @@
                 83.930109929
               ]
             }
-          ]
+          ],
+          "style_hint": "visible_circle"
         },
         "FRONT": {
+          "id": "hole_2_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_2",
           "center": [
             -38.160423278,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -38.160423278,
-              0.0
-            ],
-            "left": [
-              -43.160423278,
-              0.0
-            ],
-            "right": [
-              -33.160423278,
-              0.0
-            ],
-            "top": [
-              -38.160423278,
-              5.0
-            ],
-            "bottom": [
-              -38.160423278,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -43.160423278,
-                0.0
-              ],
-              "end": [
-                -33.160423278,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -38.160423278,
-                -5.0
-              ],
-              "end": [
-                -38.160423278,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         },
         "LEFT": {
+          "id": "hole_2_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_2",
           "center": [
             78.930109929,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              78.930109929,
-              0.0
-            ],
-            "left": [
-              73.930109929,
-              0.0
-            ],
-            "right": [
-              83.930109929,
-              0.0
-            ],
-            "top": [
-              78.930109929,
-              5.0
-            ],
-            "bottom": [
-              78.930109929,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                73.930109929,
-                0.0
-              ],
-              "end": [
-                83.930109929,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                78.930109929,
-                -5.0
-              ],
-              "end": [
-                78.930109929,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         }
-      }
+      },
+      "notes": []
     },
     {
       "id": "hole_3",
       "type": "HOLE",
-      "shape": "CIRCLE",
+      "shape": "CYLINDER",
       "center_3d": [
         59.342806812,
         -21.861447684,
@@ -3525,6 +2417,10 @@
       "orientation": "REVERSED",
       "projections": {
         "TOP": {
+          "id": "hole_3",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_3",
           "center": [
             59.342806812,
             -21.861447684
@@ -3576,122 +2472,40 @@
                 -16.861447684
               ]
             }
-          ]
+          ],
+          "style_hint": "visible_circle"
         },
         "FRONT": {
+          "id": "hole_3_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_3",
           "center": [
             59.342806812,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              59.342806812,
-              0.0
-            ],
-            "left": [
-              54.342806812,
-              0.0
-            ],
-            "right": [
-              64.34280681199999,
-              0.0
-            ],
-            "top": [
-              59.342806812,
-              5.0
-            ],
-            "bottom": [
-              59.342806812,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                54.342806812,
-                0.0
-              ],
-              "end": [
-                64.34280681199999,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                59.342806812,
-                -5.0
-              ],
-              "end": [
-                59.342806812,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         },
         "LEFT": {
+          "id": "hole_3_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_3",
           "center": [
             -21.861447684,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -21.861447684,
-              0.0
-            ],
-            "left": [
-              -26.861447684,
-              0.0
-            ],
-            "right": [
-              -16.861447684,
-              0.0
-            ],
-            "top": [
-              -21.861447684,
-              5.0
-            ],
-            "bottom": [
-              -21.861447684,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -26.861447684,
-                0.0
-              ],
-              "end": [
-                -16.861447684,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -21.861447684,
-                -5.0
-              ],
-              "end": [
-                -21.861447684,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         }
-      }
+      },
+      "notes": []
     },
     {
       "id": "hole_4",
       "type": "HOLE",
-      "shape": "CIRCLE",
+      "shape": "CYLINDER",
       "center_3d": [
         -122.803774096,
         -100.443165698,
@@ -3709,6 +2523,10 @@
       "orientation": "REVERSED",
       "projections": {
         "TOP": {
+          "id": "hole_4",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_4",
           "center": [
             -122.803774096,
             -100.443165698
@@ -3760,122 +2578,40 @@
                 -95.443165698
               ]
             }
-          ]
+          ],
+          "style_hint": "visible_circle"
         },
         "FRONT": {
+          "id": "hole_4_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_4",
           "center": [
             -122.803774096,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -122.803774096,
-              0.0
-            ],
-            "left": [
-              -127.803774096,
-              0.0
-            ],
-            "right": [
-              -117.803774096,
-              0.0
-            ],
-            "top": [
-              -122.803774096,
-              5.0
-            ],
-            "bottom": [
-              -122.803774096,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -127.803774096,
-                0.0
-              ],
-              "end": [
-                -117.803774096,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -122.803774096,
-                -5.0
-              ],
-              "end": [
-                -122.803774096,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         },
         "LEFT": {
+          "id": "hole_4_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_4",
           "center": [
             -100.443165698,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -100.443165698,
-              0.0
-            ],
-            "left": [
-              -105.443165698,
-              0.0
-            ],
-            "right": [
-              -95.443165698,
-              0.0
-            ],
-            "top": [
-              -100.443165698,
-              5.0
-            ],
-            "bottom": [
-              -100.443165698,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -105.443165698,
-                0.0
-              ],
-              "end": [
-                -95.443165698,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -100.443165698,
-                -5.0
-              ],
-              "end": [
-                -100.443165698,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         }
-      }
+      },
+      "notes": []
     },
     {
       "id": "hole_5",
       "type": "HOLE",
-      "shape": "CIRCLE",
+      "shape": "CYLINDER",
       "center_3d": [
         93.765992107,
         106.083771434,
@@ -3893,6 +2629,10 @@
       "orientation": "REVERSED",
       "projections": {
         "TOP": {
+          "id": "hole_5",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_5",
           "center": [
             93.765992107,
             106.083771434
@@ -3944,122 +2684,40 @@
                 111.083771434
               ]
             }
-          ]
+          ],
+          "style_hint": "visible_circle"
         },
         "FRONT": {
+          "id": "hole_5_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_5",
           "center": [
             93.765992107,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              93.765992107,
-              0.0
-            ],
-            "left": [
-              88.765992107,
-              0.0
-            ],
-            "right": [
-              98.765992107,
-              0.0
-            ],
-            "top": [
-              93.765992107,
-              5.0
-            ],
-            "bottom": [
-              93.765992107,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                88.765992107,
-                0.0
-              ],
-              "end": [
-                98.765992107,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                93.765992107,
-                -5.0
-              ],
-              "end": [
-                93.765992107,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         },
         "LEFT": {
+          "id": "hole_5_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_5",
           "center": [
             106.083771434,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              106.083771434,
-              0.0
-            ],
-            "left": [
-              101.083771434,
-              0.0
-            ],
-            "right": [
-              111.083771434,
-              0.0
-            ],
-            "top": [
-              106.083771434,
-              5.0
-            ],
-            "bottom": [
-              106.083771434,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                101.083771434,
-                0.0
-              ],
-              "end": [
-                111.083771434,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                106.083771434,
-                -5.0
-              ],
-              "end": [
-                106.083771434,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         }
-      }
+      },
+      "notes": []
     },
     {
       "id": "hole_6",
       "type": "HOLE",
-      "shape": "CIRCLE",
+      "shape": "CYLINDER",
       "center_3d": [
         107.16669538,
         -67.802595687,
@@ -4077,6 +2735,10 @@
       "orientation": "REVERSED",
       "projections": {
         "TOP": {
+          "id": "hole_6",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_6",
           "center": [
             107.16669538,
             -67.802595687
@@ -4128,122 +2790,40 @@
                 -62.80259568699999
               ]
             }
-          ]
+          ],
+          "style_hint": "visible_circle"
         },
         "FRONT": {
+          "id": "hole_6_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_6",
           "center": [
             107.16669538,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              107.16669538,
-              0.0
-            ],
-            "left": [
-              102.16669538,
-              0.0
-            ],
-            "right": [
-              112.16669538,
-              0.0
-            ],
-            "top": [
-              107.16669538,
-              5.0
-            ],
-            "bottom": [
-              107.16669538,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                102.16669538,
-                0.0
-              ],
-              "end": [
-                112.16669538,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                107.16669538,
-                -5.0
-              ],
-              "end": [
-                107.16669538,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         },
         "LEFT": {
+          "id": "hole_6_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_6",
           "center": [
             -67.802595687,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -67.802595687,
-              0.0
-            ],
-            "left": [
-              -72.802595687,
-              0.0
-            ],
-            "right": [
-              -62.80259568699999,
-              0.0
-            ],
-            "top": [
-              -67.802595687,
-              5.0
-            ],
-            "bottom": [
-              -67.802595687,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -72.802595687,
-                0.0
-              ],
-              "end": [
-                -62.80259568699999,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -67.802595687,
-                -5.0
-              ],
-              "end": [
-                -67.802595687,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         }
-      }
+      },
+      "notes": []
     },
     {
       "id": "hole_7",
       "type": "HOLE",
-      "shape": "CIRCLE",
+      "shape": "CYLINDER",
       "center_3d": [
         -138.107800979,
         59.203984815,
@@ -4261,6 +2841,10 @@
       "orientation": "REVERSED",
       "projections": {
         "TOP": {
+          "id": "hole_7",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_7",
           "center": [
             -138.107800979,
             59.203984815
@@ -4312,122 +2896,40 @@
                 64.203984815
               ]
             }
-          ]
+          ],
+          "style_hint": "visible_circle"
         },
         "FRONT": {
+          "id": "hole_7_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_7",
           "center": [
             -138.107800979,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -138.107800979,
-              0.0
-            ],
-            "left": [
-              -143.107800979,
-              0.0
-            ],
-            "right": [
-              -133.107800979,
-              0.0
-            ],
-            "top": [
-              -138.107800979,
-              5.0
-            ],
-            "bottom": [
-              -138.107800979,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -143.107800979,
-                0.0
-              ],
-              "end": [
-                -133.107800979,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -138.107800979,
-                -5.0
-              ],
-              "end": [
-                -138.107800979,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         },
         "LEFT": {
+          "id": "hole_7_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_7",
           "center": [
             59.203984815,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              59.203984815,
-              0.0
-            ],
-            "left": [
-              54.203984815,
-              0.0
-            ],
-            "right": [
-              64.203984815,
-              0.0
-            ],
-            "top": [
-              59.203984815,
-              5.0
-            ],
-            "bottom": [
-              59.203984815,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                54.203984815,
-                0.0
-              ],
-              "end": [
-                64.203984815,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                59.203984815,
-                -5.0
-              ],
-              "end": [
-                59.203984815,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         }
-      }
+      },
+      "notes": []
     },
     {
       "id": "hole_8",
       "type": "HOLE",
-      "shape": "CIRCLE",
+      "shape": "CYLINDER",
       "center_3d": [
         4.513942176,
         -101.256613859,
@@ -4445,6 +2947,10 @@
       "orientation": "REVERSED",
       "projections": {
         "TOP": {
+          "id": "hole_8",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_8",
           "center": [
             4.513942176,
             -101.256613859
@@ -4496,122 +3002,40 @@
                 -96.256613859
               ]
             }
-          ]
+          ],
+          "style_hint": "visible_circle"
         },
         "FRONT": {
+          "id": "hole_8_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_8",
           "center": [
             4.513942176,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              4.513942176,
-              0.0
-            ],
-            "left": [
-              -0.4860578240000004,
-              0.0
-            ],
-            "right": [
-              9.513942176,
-              0.0
-            ],
-            "top": [
-              4.513942176,
-              5.0
-            ],
-            "bottom": [
-              4.513942176,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -0.4860578240000004,
-                0.0
-              ],
-              "end": [
-                9.513942176,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                4.513942176,
-                -5.0
-              ],
-              "end": [
-                4.513942176,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         },
         "LEFT": {
+          "id": "hole_8_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_8",
           "center": [
             -101.256613859,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -101.256613859,
-              0.0
-            ],
-            "left": [
-              -106.256613859,
-              0.0
-            ],
-            "right": [
-              -96.256613859,
-              0.0
-            ],
-            "top": [
-              -101.256613859,
-              5.0
-            ],
-            "bottom": [
-              -101.256613859,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -106.256613859,
-                0.0
-              ],
-              "end": [
-                -96.256613859,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -101.256613859,
-                -5.0
-              ],
-              "end": [
-                -101.256613859,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         }
-      }
+      },
+      "notes": []
     },
     {
       "id": "hole_9",
       "type": "HOLE",
-      "shape": "CIRCLE",
+      "shape": "CYLINDER",
       "center_3d": [
         -11.718365287,
         -183.62404443,
@@ -4629,6 +3053,10 @@
       "orientation": "REVERSED",
       "projections": {
         "TOP": {
+          "id": "hole_9",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_9",
           "center": [
             -11.718365287,
             -183.62404443
@@ -4680,122 +3108,40 @@
                 -178.62404443
               ]
             }
-          ]
+          ],
+          "style_hint": "visible_circle"
         },
         "FRONT": {
+          "id": "hole_9_axis_projection_FRONT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_9",
           "center": [
             -11.718365287,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -11.718365287,
-              0.0
-            ],
-            "left": [
-              -16.718365286999997,
-              0.0
-            ],
-            "right": [
-              -6.718365286999999,
-              0.0
-            ],
-            "top": [
-              -11.718365287,
-              5.0
-            ],
-            "bottom": [
-              -11.718365287,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -16.718365286999997,
-                0.0
-              ],
-              "end": [
-                -6.718365286999999,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -11.718365287,
-                -5.0
-              ],
-              "end": [
-                -11.718365287,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         },
         "LEFT": {
+          "id": "hole_9_axis_projection_LEFT",
+          "type": "HOLE_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "hole_9",
           "center": [
             -183.62404443,
             0.0
           ],
-          "radius": 5.0,
-          "diameter": 10.0,
-          "anchor_points": {
-            "center": [
-              -183.62404443,
-              0.0
-            ],
-            "left": [
-              -188.62404443,
-              0.0
-            ],
-            "right": [
-              -178.62404443,
-              0.0
-            ],
-            "top": [
-              -183.62404443,
-              5.0
-            ],
-            "bottom": [
-              -183.62404443,
-              -5.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -188.62404443,
-                0.0
-              ],
-              "end": [
-                -178.62404443,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                -183.62404443,
-                -5.0
-              ],
-              "end": [
-                -183.62404443,
-                5.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         }
-      }
+      },
+      "notes": []
     },
     {
       "id": "outer_cylinder_1",
       "type": "OUTER_CYLINDER",
-      "shape": "CIRCLE",
+      "shape": "CYLINDER",
       "center_3d": [
         0.0,
         0.0,
@@ -4813,6 +3159,10 @@
       "orientation": "FORWARD",
       "projections": {
         "TOP": {
+          "id": "outer_cylinder_1",
+          "type": "OUTER_CYLINDER",
+          "shape": "CIRCLE",
+          "source_feature_3d": "outer_cylinder_1",
           "center": [
             0.0,
             0.0
@@ -4864,117 +3214,35 @@
                 250.0
               ]
             }
-          ]
+          ],
+          "style_hint": "visible_circle"
         },
         "FRONT": {
+          "id": "outer_cylinder_1_axis_projection_FRONT",
+          "type": "CYLINDER_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "outer_cylinder_1",
           "center": [
             0.0,
             0.0
           ],
-          "radius": 250.0,
-          "diameter": 500.0,
-          "anchor_points": {
-            "center": [
-              0.0,
-              0.0
-            ],
-            "left": [
-              -250.0,
-              0.0
-            ],
-            "right": [
-              250.0,
-              0.0
-            ],
-            "top": [
-              0.0,
-              250.0
-            ],
-            "bottom": [
-              0.0,
-              -250.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -250.0,
-                0.0
-              ],
-              "end": [
-                250.0,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                0.0,
-                -250.0
-              ],
-              "end": [
-                0.0,
-                250.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         },
         "LEFT": {
+          "id": "outer_cylinder_1_axis_projection_LEFT",
+          "type": "CYLINDER_AXIS_PROJECTION",
+          "shape": "CENTERLINE",
+          "source_feature_3d": "outer_cylinder_1",
           "center": [
             0.0,
             0.0
           ],
-          "radius": 250.0,
-          "diameter": 500.0,
-          "anchor_points": {
-            "center": [
-              0.0,
-              0.0
-            ],
-            "left": [
-              -250.0,
-              0.0
-            ],
-            "right": [
-              250.0,
-              0.0
-            ],
-            "top": [
-              0.0,
-              250.0
-            ],
-            "bottom": [
-              0.0,
-              -250.0
-            ]
-          },
-          "centerlines": [
-            {
-              "id": "horizontal",
-              "start": [
-                -250.0,
-                0.0
-              ],
-              "end": [
-                250.0,
-                0.0
-              ]
-            },
-            {
-              "id": "vertical",
-              "start": [
-                0.0,
-                -250.0
-              ],
-              "end": [
-                0.0,
-                250.0
-              ]
-            }
-          ]
+          "style_hint": "projected_centerline_or_hidden_feature",
+          "note": "Cylinder axis is not parallel to view direction; do not draw as visible circle."
         }
-      }
+      },
+      "notes": []
     }
   ],
   "generation_hints_for_csharp": {

@@ -51,11 +51,15 @@ class PartType(str, Enum):
 
 class FeatureType(str, Enum):
     HOLE = "HOLE"
+    HOLE_AXIS_PROJECTION = "HOLE_AXIS_PROJECTION"
     OUTER_CYLINDER = "OUTER_CYLINDER"
+    CYLINDER_AXIS_PROJECTION = "CYLINDER_AXIS_PROJECTION"
 
 
 class ShapeType(str, Enum):
     CIRCLE = "CIRCLE"
+    CENTERLINE = "CENTERLINE"
+    CYLINDER = "CYLINDER"
     RECTANGLE = "RECTANGLE"
 
 
@@ -246,6 +250,7 @@ class Feature3D:
     source_face_id: int | None
     orientation: Orientation
     projections: Mapping[str, Any] = field(default_factory=dict)
+    notes: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -260,6 +265,7 @@ class Feature3D:
             "source_face_id": self.source_face_id,
             "orientation": self.orientation.value,
             "projections": to_jsonable(dict(self.projections)),
+            "notes": list(self.notes),
         }
 
 
@@ -268,7 +274,7 @@ class Dimension:
     id: str
     type: DimensionType
     name: str
-    value: float
+    value: float | None
     view: ViewName
     target_feature_id: str | None
     points: Mapping[str, Any]

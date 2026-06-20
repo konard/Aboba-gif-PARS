@@ -46,6 +46,12 @@ SCHEMA_VERSION = "1.0"
 DEFAULT_UNITS = "mm"
 ROUND_BBOX_TOLERANCE = 0.15
 THIN_PLATE_RATIO = 0.2
+AXIS_PARALLEL_TOLERANCE = 0.9
+VIEW_DIRECTIONS: Mapping[ViewName, list[float]] = {
+    ViewName.TOP: [0.0, 0.0, 1.0],
+    ViewName.FRONT: [0.0, 1.0, 0.0],
+    ViewName.LEFT: [1.0, 0.0, 0.0],
+}
 
 
 @dataclass(frozen=True)
@@ -56,6 +62,7 @@ class CylinderData:
     center: list[float]
     axis_direction: list[float]
     orientation: Orientation
+    notes: tuple[str, ...] = ()
 
     @property
     def diameter(self) -> float:
@@ -109,6 +116,45 @@ def project_point(point_3d: Sequence[float], view: ViewName) -> list[float]:
     point = _as_point(point_3d, [0.0, 0.0, 0.0], 3)
     first, second = VIEW_SPECS[view].coordinate_indices
     return [point[first], point[second]]
+
+
+def dot(a: Sequence[float], b: Sequence[float]) -> float:
+    first = _as_point(a, [0.0, 0.0, 0.0], 3)
+    second = _as_point(b, [0.0, 0.0, 0.0], 3)
+    return sum(left * right for left, right in zip(first, second))
+
+
+def normalize_vector(vector: Sequence[float]) -> list[float]:
+    values = _as_point(vector, [0.0, 0.0, 0.0], 3)
+    length = sum(component * component for component in values) ** 0.5
+    if length <= 0.0:
+        return [0.0, 0.0, 0.0]
+    return [component / length for component in values]
+
+
+def get_view_direction(view: ViewName) -> list[float]:
+    return list(VIEW_DIRECTIONS[view])
+
+
+def is_axis_parallel_to_view(
+    axis_direction: Sequence[float],
+    view: ViewName,
+    tolerance: float = AXIS_PARALLEL_TOLERANCE,
+) -> bool:
+    normalized_axis = normalize_vector(axis_direction)
+    if normalized_axis == [0.0, 0.0, 0.0]:
+        return False
+    return abs(dot(normalized_axis, get_view_direction(view))) >= tolerance
+
+
+def select_circular_view_for_axis(
+    axis_direction: Sequence[float],
+    tolerance: float = AXIS_PARALLEL_TOLERANCE,
+) -> ViewName | None:
+    for view in ViewName:
+        if is_axis_parallel_to_view(axis_direction, view, tolerance=tolerance):
+            return view
+    return None
 
 
 def circle_anchor_points(center: Sequence[float], radius: float) -> dict[str, list[float]]:
@@ -197,7 +243,7 @@ class DraftingPartClassifier:
             return PartType.PLATE
 
         if holes_count > 0:
-            if self.is_round_plate():
+            if outer_count > 0 and self.is_round_plate():
                 return PartType.ROUND_PLATE_WITH_HOLES
             if planes >= 6:
                 return PartType.RECTANGULAR_PLATE_WITH_HOLES
@@ -217,14 +263,38 @@ def cylinder_from_face(
 
     params = _as_mapping(face.get("params"))
     axis = _as_mapping(params.get("axis"))
+    face_id = _as_int_or_none(face.get("face_id"))
+    label = f"face {face_id}" if face_id is not None else "a cylinder face"
+    notes: list[str] = []
+
+    if "radius" not in params:
+        notes.append(f"Cylinder {label} is missing params.radius; using 0.0.")
+    if "height" not in params:
+        notes.append(f"Cylinder {label} is missing params.height; using bbox dz.")
+    if not axis:
+        notes.append(
+            f"Cylinder {label} is missing params.axis; using bbox center and Z axis."
+        )
+    else:
+        if "location" not in axis:
+            notes.append(
+                f"Cylinder {label} is missing params.axis.location; using bbox center."
+            )
+        if "axis_direction" not in axis:
+            notes.append(
+                f"Cylinder {label} is missing params.axis.axis_direction; using Z axis."
+            )
+    if "orientation" not in params:
+        notes.append(f"Cylinder {label} is missing params.orientation; using FORWARD.")
 
     return CylinderData(
-        face_id=_as_int_or_none(face.get("face_id")),
+        face_id=face_id,
         radius=_as_float(params.get("radius")),
         height=_as_float(params.get("height"), bbox.dz),
         center=_as_point(axis.get("location"), bbox.center, 3),
         axis_direction=_as_point(axis.get("axis_direction"), [0.0, 0.0, 1.0], 3),
         orientation=_normalize_orientation(params.get("orientation")),
+        notes=tuple(notes),
     )
 
 
@@ -238,6 +308,7 @@ class DrawingConfigGenerator:
         self.drafting_data = _as_mapping(drafting_data)
         self.source = source
         self.units = units
+        self.input_notes = self._collect_input_notes()
         self.bbox = BBox3D.from_mapping(_as_mapping(self.drafting_data.get("bbox")))
         self.faces = self._faces_from_data()
         self.cylinders = [
@@ -246,6 +317,19 @@ class DrawingConfigGenerator:
             if (cylinder := cylinder_from_face(face, self.bbox)) is not None
         ]
         self.part_type = DraftingPartClassifier(self.bbox, self.faces).classify()
+
+    def _collect_input_notes(self) -> list[str]:
+        notes: list[str] = []
+        if not isinstance(self.drafting_data.get("bbox"), Mapping):
+            notes.append("Input JSON is missing bbox; using zero-sized fallback bbox.")
+
+        faces = self.drafting_data.get("faces")
+        if faces is None:
+            notes.append("Input JSON is missing faces; no geometry features will be generated.")
+        elif not isinstance(faces, Sequence) or isinstance(faces, (str, bytes)):
+            notes.append("Input JSON faces field is not a list; no geometry features will be generated.")
+
+        return notes
 
     def generate(self) -> dict[str, Any]:
         features_3d = self._build_features_3d()
@@ -314,14 +398,19 @@ class DrawingConfigGenerator:
         feature_type: FeatureType,
     ) -> dict[str, Any]:
         projections = {
-            view.value: self._circular_projection(cylinder.center, cylinder.radius, view)
+            view.value: self._projection_for_cylinder(
+                cylinder=cylinder,
+                feature_id=feature_id,
+                feature_type=feature_type,
+                view=view,
+            )
             for view in ViewName
         }
 
         feature = Feature3D(
             id=feature_id,
             type=feature_type,
-            shape=ShapeType.CIRCLE,
+            shape=ShapeType.CYLINDER,
             center_3d=cylinder.center,
             axis_direction=cylinder.axis_direction,
             radius=cylinder.radius,
@@ -330,18 +419,48 @@ class DrawingConfigGenerator:
             source_face_id=cylinder.face_id,
             orientation=cylinder.orientation,
             projections=projections,
+            notes=list(cylinder.notes),
         )
         return feature.to_dict()
+
+    def _projection_for_cylinder(
+        self,
+        cylinder: CylinderData,
+        feature_id: str,
+        feature_type: FeatureType,
+        view: ViewName,
+    ) -> dict[str, Any]:
+        if is_axis_parallel_to_view(cylinder.axis_direction, view):
+            return self._circular_projection(
+                center_3d=cylinder.center,
+                radius=cylinder.radius,
+                feature_id=feature_id,
+                feature_type=feature_type,
+                view=view,
+            )
+
+        return self._axis_projection(
+            center_3d=cylinder.center,
+            feature_id=feature_id,
+            feature_type=feature_type,
+            view=view,
+        )
 
     def _circular_projection(
         self,
         center_3d: Sequence[float],
         radius: float,
+        feature_id: str,
+        feature_type: FeatureType,
         view: ViewName,
     ) -> dict[str, Any]:
         center = project_point(center_3d, view)
         anchors = circle_anchor_points(center, radius)
         return {
+            "id": feature_id,
+            "type": feature_type.value,
+            "shape": ShapeType.CIRCLE.value,
+            "source_feature_3d": feature_id,
             "center": center,
             "radius": radius,
             "diameter": 2.0 * radius,
@@ -358,6 +477,32 @@ class DrawingConfigGenerator:
                     "end": anchors["top"],
                 },
             ],
+            "style_hint": "visible_circle",
+        }
+
+    def _axis_projection(
+        self,
+        center_3d: Sequence[float],
+        feature_id: str,
+        feature_type: FeatureType,
+        view: ViewName,
+    ) -> dict[str, Any]:
+        projection_type = (
+            FeatureType.HOLE_AXIS_PROJECTION
+            if feature_type == FeatureType.HOLE
+            else FeatureType.CYLINDER_AXIS_PROJECTION
+        )
+        return {
+            "id": f"{feature_id}_axis_projection_{view.value}",
+            "type": projection_type.value,
+            "shape": ShapeType.CENTERLINE.value,
+            "source_feature_3d": feature_id,
+            "center": project_point(center_3d, view),
+            "style_hint": "projected_centerline_or_hidden_feature",
+            "note": (
+                "Cylinder axis is not parallel to view direction; "
+                "do not draw as visible circle."
+            ),
         }
 
     def _build_view(
@@ -367,6 +512,7 @@ class DrawingConfigGenerator:
     ) -> DrawingView:
         spec = VIEW_SPECS[view]
         view_bbox = self.bbox.view_bbox(view)
+        outline = self._outline_for_view(view)
 
         return DrawingView(
             name=view,
@@ -374,11 +520,11 @@ class DrawingConfigGenerator:
             visible_axes=list(spec.visible_axes),
             origin_3d=self.bbox.minimum,
             view_bbox_2d=view_bbox,
-            outline=self._outline_for_view(view),
+            outline=outline,
             features=self._features_for_view(view, features_3d),
             anchor_points=self._anchor_points_for_view(view_bbox),
             dimensions=self._dimensions_for_view(view, features_3d),
-            notes=[],
+            notes=self._notes_for_view(view, features_3d, outline),
         )
 
     def _outline_for_view(self, view: ViewName) -> dict[str, Any]:
@@ -386,11 +532,11 @@ class DrawingConfigGenerator:
         min_x, min_y = view_bbox.minimum
         max_x, max_y = view_bbox.maximum
 
-        if view == ViewName.TOP and self._is_round_bbox_xy():
+        if view == ViewName.TOP and self._should_use_circular_top_outline():
             radius = max(abs(self.bbox.dx), abs(self.bbox.dy)) / 2.0
             return {
                 "type": ShapeType.CIRCLE.value,
-                "source": "bbox_xy",
+                "source": "classified_round_outline",
                 "center": view_bbox.center,
                 "radius": radius,
                 "diameter": 2.0 * radius,
@@ -415,6 +561,16 @@ class DrawingConfigGenerator:
             return False
         return abs(dx - dy) / max_xy < ROUND_BBOX_TOLERANCE
 
+    def _has_outer_forward_cylinder(self) -> bool:
+        return any(
+            cylinder.orientation == Orientation.FORWARD for cylinder in self.cylinders
+        )
+
+    def _should_use_circular_top_outline(self) -> bool:
+        if self.part_type in {PartType.CYLINDER, PartType.ROUND_PLATE_WITH_HOLES}:
+            return True
+        return self._has_outer_forward_cylinder() and self._is_round_bbox_xy()
+
     def _anchor_points_for_view(self, view_bbox: Any) -> dict[str, Any]:
         min_x, min_y = view_bbox.minimum
         max_x, max_y = view_bbox.maximum
@@ -434,7 +590,63 @@ class DrawingConfigGenerator:
                 "top_right": [max_x, max_y],
                 "top_left": [min_x, max_y],
             },
+            "midpoints": {
+                "left_mid": [min_x, center_y],
+                "right_mid": [max_x, center_y],
+                "top_mid": [center_x, max_y],
+                "bottom_mid": [center_x, min_y],
+            },
         }
+
+    def _notes_for_view(
+        self,
+        view: ViewName,
+        features_3d: Sequence[Mapping[str, Any]],
+        outline: Mapping[str, Any],
+    ) -> list[str]:
+        notes = list(self.input_notes)
+
+        if (
+            view == ViewName.TOP
+            and outline.get("type") == ShapeType.RECTANGLE.value
+            and self._is_round_bbox_xy()
+            and self.part_type not in {PartType.CYLINDER, PartType.ROUND_PLATE_WITH_HOLES}
+            and not self._has_outer_forward_cylinder()
+        ):
+            notes.append(
+                "TOP outline selected as RECTANGLE because round bbox alone is not "
+                "enough to classify circular outline."
+            )
+
+        for feature in features_3d:
+            for feature_note in feature.get("notes", []):
+                notes.append(str(feature_note))
+
+            if feature.get("type") != FeatureType.HOLE.value:
+                continue
+
+            feature_id = str(feature.get("id"))
+            axis_direction = _as_point(feature.get("axis_direction"), [0.0, 0.0, 0.0], 3)
+            if normalize_vector(axis_direction) == [0.0, 0.0, 0.0]:
+                notes.append(
+                    f"Hole {feature_id} axis direction is zero; circular view is ambiguous."
+                )
+
+            projections = _as_mapping(feature.get("projections"))
+            projection = _as_mapping(projections.get(view.value))
+            if projection.get("shape") != ShapeType.CIRCLE.value:
+                notes.append(
+                    f"Hole {feature_id} is not circular in {view.value} view; "
+                    "represented as centerline projection."
+                )
+
+            if view == ViewName.TOP and select_circular_view_for_axis(axis_direction) is None:
+                notes.append(
+                    f"Could not find a circular view for hole {feature_id} diameter; "
+                    "placed fallback diameter on TOP."
+                )
+
+        return notes
 
     def _features_for_view(
         self,
@@ -448,24 +660,14 @@ class DrawingConfigGenerator:
 
             projections = _as_mapping(feature.get("projections"))
             projection = _as_mapping(projections.get(view.value))
-            view_features.append(
-                {
-                    "id": feature.get("id"),
-                    "type": feature.get("type"),
-                    "shape": feature.get("shape"),
-                    "source_feature_3d": feature.get("id"),
-                    "center_3d": feature.get("center_3d", []),
-                    "axis_direction": feature.get("axis_direction", []),
-                    "center": projection.get("center", [0.0, 0.0]),
-                    "radius": projection.get("radius", 0.0),
-                    "diameter": projection.get("diameter", 0.0),
-                    "anchor_points": projection.get("anchor_points", {}),
-                    "centerlines": projection.get("centerlines", []),
-                    "style_hint": (
-                        "visible_circle" if view == ViewName.TOP else "projected_centerline"
-                    ),
-                }
-            )
+            view_feature = dict(projection)
+            view_feature.setdefault("id", feature.get("id"))
+            view_feature.setdefault("type", feature.get("type"))
+            view_feature.setdefault("shape", ShapeType.CENTERLINE.value)
+            view_feature.setdefault("source_feature_3d", feature.get("id"))
+            view_feature["center_3d"] = feature.get("center_3d", [])
+            view_feature["axis_direction"] = feature.get("axis_direction", [])
+            view_features.append(view_feature)
         return view_features
 
     def _dimensions_for_view(
@@ -477,8 +679,10 @@ class DrawingConfigGenerator:
 
         if view == ViewName.TOP:
             dimensions.extend(self._top_global_dimensions())
-            dimensions.extend(self._hole_dimensions(features_3d))
+            dimensions.extend(self._hole_coordinate_dimensions_for_top(features_3d))
             dimensions.extend(self._outer_cylinder_top_dimensions(features_3d))
+
+        dimensions.extend(self._hole_dimensions_for_view(view, features_3d))
 
         if view == ViewName.FRONT:
             dimensions.append(self._thickness_dimension(ViewName.FRONT))
@@ -522,12 +726,12 @@ class DrawingConfigGenerator:
 
     def _thickness_dimension(self, view: ViewName) -> Dimension:
         if view == ViewName.FRONT:
-            start = [self.bbox.xmax, self.bbox.zmin]
-            end = [self.bbox.xmax, self.bbox.zmax]
+            start = [self.bbox.xmin, self.bbox.zmin]
+            end = [self.bbox.xmin, self.bbox.zmax]
             dimension_id = "dim_thickness_front"
         else:
-            start = [self.bbox.ymax, self.bbox.zmin]
-            end = [self.bbox.ymax, self.bbox.zmax]
+            start = [self.bbox.ymin, self.bbox.zmin]
+            end = [self.bbox.ymin, self.bbox.zmax]
             dimension_id = "dim_thickness_left"
 
         return Dimension(
@@ -538,10 +742,63 @@ class DrawingConfigGenerator:
             view=view,
             target_feature_id=None,
             points={"start": start, "end": end},
-            placement_hint="right_of_outline",
+            placement_hint="left_of_outline",
         )
 
-    def _hole_dimensions(
+    def _hole_dimensions_for_view(
+        self,
+        view: ViewName,
+        features_3d: Sequence[Mapping[str, Any]],
+    ) -> list[Dimension]:
+        dimensions: list[Dimension] = []
+        for feature in features_3d:
+            if feature.get("type") != FeatureType.HOLE.value:
+                continue
+
+            feature_id = str(feature.get("id"))
+            axis_direction = _as_point(feature.get("axis_direction"), [0.0, 0.0, 0.0], 3)
+            circular_view = select_circular_view_for_axis(axis_direction)
+            target_view = circular_view or ViewName.TOP
+            if view != target_view:
+                continue
+
+            center_3d = _as_point(feature.get("center_3d"), self.bbox.center, 3)
+            projection = _as_mapping(_as_mapping(feature.get("projections")).get(view.value))
+            center = _as_point(projection.get("center"), project_point(center_3d, view), 2)
+            diameter = _as_float(feature.get("diameter"))
+
+            dimensions.append(
+                Dimension(
+                    id=f"dim_{feature_id}_diameter_{view.value}",
+                    type=DimensionType.DIAMETER,
+                    name="HOLE_DIAMETER",
+                    value=diameter,
+                    view=view,
+                    target_feature_id=feature_id,
+                    points={"center": center},
+                    placement_hint="near_hole",
+                )
+            )
+
+            if circular_view is None or projection.get("shape") != ShapeType.CIRCLE.value:
+                continue
+
+            dimensions.append(
+                Dimension(
+                    id=f"center_mark_{feature_id}_{view.value}",
+                    type=DimensionType.CENTER_MARK,
+                    name="HOLE_CENTER",
+                    value=None,
+                    view=view,
+                    target_feature_id=feature_id,
+                    points={"center": center},
+                    placement_hint="at_center",
+                )
+            )
+
+        return dimensions
+
+    def _hole_coordinate_dimensions_for_top(
         self,
         features_3d: Sequence[Mapping[str, Any]],
     ) -> list[Dimension]:
@@ -549,47 +806,16 @@ class DrawingConfigGenerator:
         for feature in features_3d:
             if feature.get("type") != FeatureType.HOLE.value:
                 continue
+
             feature_id = str(feature.get("id"))
             projection = _as_mapping(
                 _as_mapping(feature.get("projections")).get(ViewName.TOP.value)
             )
-            center = _as_point(projection.get("center"), [0.0, 0.0], 2)
-            diameter = _as_float(feature.get("diameter"))
-            radius = _as_float(feature.get("radius"))
-
-            dimensions.append(
-                Dimension(
-                    id=f"dim_{feature_id}_diameter",
-                    type=DimensionType.DIAMETER,
-                    name="HOLE_DIAMETER",
-                    value=diameter,
-                    view=ViewName.TOP,
-                    target_feature_id=feature_id,
-                    points={"center": center},
-                    placement_hint="near_hole",
-                )
-            )
-            dimensions.append(
-                Dimension(
-                    id=f"dim_{feature_id}_center_mark",
-                    type=DimensionType.CENTER_MARK,
-                    name="HOLE_CENTER_MARK",
-                    value=0.0,
-                    view=ViewName.TOP,
-                    target_feature_id=feature_id,
-                    points={
-                        "center": center,
-                        "horizontal": {
-                            "start": [center[0] - radius, center[1]],
-                            "end": [center[0] + radius, center[1]],
-                        },
-                        "vertical": {
-                            "start": [center[0], center[1] - radius],
-                            "end": [center[0], center[1] + radius],
-                        },
-                    },
-                    placement_hint="at_hole_center",
-                )
+            center_3d = _as_point(feature.get("center_3d"), self.bbox.center, 3)
+            center = _as_point(
+                projection.get("center"),
+                project_point(center_3d, ViewName.TOP),
+                2,
             )
             dimensions.extend(self._hole_coordinate_dimensions(feature_id, center))
 
@@ -734,7 +960,9 @@ def load_drafting_data(input_path: str | Path) -> dict[str, Any]:
 
 
 def write_drawing_config(config: Mapping[str, Any], output_path: str | Path) -> None:
-    with Path(output_path).open("w", encoding="utf-8") as file:
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w", encoding="utf-8") as file:
         json.dump(to_jsonable(dict(config)), file, indent=2, ensure_ascii=False)
         file.write("\n")
 
