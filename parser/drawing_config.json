@@ -1,0 +1,4996 @@
+{
+  "schema_version": "1.0",
+  "source": "drafting_data.json",
+  "units": "mm",
+  "part_type": "ROUND_PLATE_WITH_HOLES",
+  "bbox_3d": {
+    "min": [
+      -250.0000001,
+      -250.0000001,
+      -1e-07
+    ],
+    "max": [
+      250.0000001,
+      250.0000001,
+      10.0000001
+    ],
+    "size": [
+      500.0000002,
+      500.0000002,
+      10.000000199999999
+    ],
+    "center": [
+      0.0,
+      0.0,
+      5.0
+    ]
+  },
+  "views": {
+    "TOP": {
+      "name": "TOP",
+      "projection_plane": "XY",
+      "visible_axes": [
+        "X",
+        "Y"
+      ],
+      "origin_3d": [
+        -250.0000001,
+        -250.0000001,
+        -1e-07
+      ],
+      "view_bbox_2d": {
+        "min": [
+          -250.0000001,
+          -250.0000001
+        ],
+        "max": [
+          250.0000001,
+          250.0000001
+        ],
+        "size": [
+          500.0000002,
+          500.0000002
+        ],
+        "center": [
+          0.0,
+          0.0
+        ]
+      },
+      "outline": {
+        "type": "CIRCLE",
+        "source": "bbox_xy",
+        "center": [
+          0.0,
+          0.0
+        ],
+        "radius": 250.0000001,
+        "diameter": 500.0000002
+      },
+      "features": [
+        {
+          "id": "hole_1",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_1",
+          "center_3d": [
+            -53.138147554,
+            -18.144543633,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -53.138147554,
+            -18.144543633
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -53.138147554,
+              -18.144543633
+            ],
+            "left": [
+              -58.138147554,
+              -18.144543633
+            ],
+            "right": [
+              -48.138147554,
+              -18.144543633
+            ],
+            "top": [
+              -53.138147554,
+              -13.144543633000001
+            ],
+            "bottom": [
+              -53.138147554,
+              -23.144543633
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -58.138147554,
+                -18.144543633
+              ],
+              "end": [
+                -48.138147554,
+                -18.144543633
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -53.138147554,
+                -23.144543633
+              ],
+              "end": [
+                -53.138147554,
+                -13.144543633000001
+              ]
+            }
+          ],
+          "style_hint": "visible_circle"
+        },
+        {
+          "id": "hole_2",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_2",
+          "center_3d": [
+            -38.160423278,
+            78.930109929,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -38.160423278,
+            78.930109929
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -38.160423278,
+              78.930109929
+            ],
+            "left": [
+              -43.160423278,
+              78.930109929
+            ],
+            "right": [
+              -33.160423278,
+              78.930109929
+            ],
+            "top": [
+              -38.160423278,
+              83.930109929
+            ],
+            "bottom": [
+              -38.160423278,
+              73.930109929
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -43.160423278,
+                78.930109929
+              ],
+              "end": [
+                -33.160423278,
+                78.930109929
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -38.160423278,
+                73.930109929
+              ],
+              "end": [
+                -38.160423278,
+                83.930109929
+              ]
+            }
+          ],
+          "style_hint": "visible_circle"
+        },
+        {
+          "id": "hole_3",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_3",
+          "center_3d": [
+            59.342806812,
+            -21.861447684,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            59.342806812,
+            -21.861447684
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              59.342806812,
+              -21.861447684
+            ],
+            "left": [
+              54.342806812,
+              -21.861447684
+            ],
+            "right": [
+              64.34280681199999,
+              -21.861447684
+            ],
+            "top": [
+              59.342806812,
+              -16.861447684
+            ],
+            "bottom": [
+              59.342806812,
+              -26.861447684
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                54.342806812,
+                -21.861447684
+              ],
+              "end": [
+                64.34280681199999,
+                -21.861447684
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                59.342806812,
+                -26.861447684
+              ],
+              "end": [
+                59.342806812,
+                -16.861447684
+              ]
+            }
+          ],
+          "style_hint": "visible_circle"
+        },
+        {
+          "id": "hole_4",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_4",
+          "center_3d": [
+            -122.803774096,
+            -100.443165698,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -122.803774096,
+            -100.443165698
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -122.803774096,
+              -100.443165698
+            ],
+            "left": [
+              -127.803774096,
+              -100.443165698
+            ],
+            "right": [
+              -117.803774096,
+              -100.443165698
+            ],
+            "top": [
+              -122.803774096,
+              -95.443165698
+            ],
+            "bottom": [
+              -122.803774096,
+              -105.443165698
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -127.803774096,
+                -100.443165698
+              ],
+              "end": [
+                -117.803774096,
+                -100.443165698
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -122.803774096,
+                -105.443165698
+              ],
+              "end": [
+                -122.803774096,
+                -95.443165698
+              ]
+            }
+          ],
+          "style_hint": "visible_circle"
+        },
+        {
+          "id": "hole_5",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_5",
+          "center_3d": [
+            93.765992107,
+            106.083771434,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            93.765992107,
+            106.083771434
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              93.765992107,
+              106.083771434
+            ],
+            "left": [
+              88.765992107,
+              106.083771434
+            ],
+            "right": [
+              98.765992107,
+              106.083771434
+            ],
+            "top": [
+              93.765992107,
+              111.083771434
+            ],
+            "bottom": [
+              93.765992107,
+              101.083771434
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                88.765992107,
+                106.083771434
+              ],
+              "end": [
+                98.765992107,
+                106.083771434
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                93.765992107,
+                101.083771434
+              ],
+              "end": [
+                93.765992107,
+                111.083771434
+              ]
+            }
+          ],
+          "style_hint": "visible_circle"
+        },
+        {
+          "id": "hole_6",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_6",
+          "center_3d": [
+            107.16669538,
+            -67.802595687,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            107.16669538,
+            -67.802595687
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              107.16669538,
+              -67.802595687
+            ],
+            "left": [
+              102.16669538,
+              -67.802595687
+            ],
+            "right": [
+              112.16669538,
+              -67.802595687
+            ],
+            "top": [
+              107.16669538,
+              -62.80259568699999
+            ],
+            "bottom": [
+              107.16669538,
+              -72.802595687
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                102.16669538,
+                -67.802595687
+              ],
+              "end": [
+                112.16669538,
+                -67.802595687
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                107.16669538,
+                -72.802595687
+              ],
+              "end": [
+                107.16669538,
+                -62.80259568699999
+              ]
+            }
+          ],
+          "style_hint": "visible_circle"
+        },
+        {
+          "id": "hole_7",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_7",
+          "center_3d": [
+            -138.107800979,
+            59.203984815,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -138.107800979,
+            59.203984815
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -138.107800979,
+              59.203984815
+            ],
+            "left": [
+              -143.107800979,
+              59.203984815
+            ],
+            "right": [
+              -133.107800979,
+              59.203984815
+            ],
+            "top": [
+              -138.107800979,
+              64.203984815
+            ],
+            "bottom": [
+              -138.107800979,
+              54.203984815
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -143.107800979,
+                59.203984815
+              ],
+              "end": [
+                -133.107800979,
+                59.203984815
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -138.107800979,
+                54.203984815
+              ],
+              "end": [
+                -138.107800979,
+                64.203984815
+              ]
+            }
+          ],
+          "style_hint": "visible_circle"
+        },
+        {
+          "id": "hole_8",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_8",
+          "center_3d": [
+            4.513942176,
+            -101.256613859,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            4.513942176,
+            -101.256613859
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              4.513942176,
+              -101.256613859
+            ],
+            "left": [
+              -0.4860578240000004,
+              -101.256613859
+            ],
+            "right": [
+              9.513942176,
+              -101.256613859
+            ],
+            "top": [
+              4.513942176,
+              -96.256613859
+            ],
+            "bottom": [
+              4.513942176,
+              -106.256613859
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -0.4860578240000004,
+                -101.256613859
+              ],
+              "end": [
+                9.513942176,
+                -101.256613859
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                4.513942176,
+                -106.256613859
+              ],
+              "end": [
+                4.513942176,
+                -96.256613859
+              ]
+            }
+          ],
+          "style_hint": "visible_circle"
+        },
+        {
+          "id": "hole_9",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_9",
+          "center_3d": [
+            -11.718365287,
+            -183.62404443,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -11.718365287,
+            -183.62404443
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -11.718365287,
+              -183.62404443
+            ],
+            "left": [
+              -16.718365286999997,
+              -183.62404443
+            ],
+            "right": [
+              -6.718365286999999,
+              -183.62404443
+            ],
+            "top": [
+              -11.718365287,
+              -178.62404443
+            ],
+            "bottom": [
+              -11.718365287,
+              -188.62404443
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -16.718365286999997,
+                -183.62404443
+              ],
+              "end": [
+                -6.718365286999999,
+                -183.62404443
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -11.718365287,
+                -188.62404443
+              ],
+              "end": [
+                -11.718365287,
+                -178.62404443
+              ]
+            }
+          ],
+          "style_hint": "visible_circle"
+        }
+      ],
+      "anchor_points": {
+        "bbox_min": [
+          -250.0000001,
+          -250.0000001
+        ],
+        "bbox_max": [
+          250.0000001,
+          250.0000001
+        ],
+        "bbox_center": [
+          0.0,
+          0.0
+        ],
+        "left_mid": [
+          -250.0000001,
+          0.0
+        ],
+        "right_mid": [
+          250.0000001,
+          0.0
+        ],
+        "top_mid": [
+          0.0,
+          250.0000001
+        ],
+        "bottom_mid": [
+          0.0,
+          -250.0000001
+        ],
+        "corners": {
+          "bottom_left": [
+            -250.0000001,
+            -250.0000001
+          ],
+          "bottom_right": [
+            250.0000001,
+            -250.0000001
+          ],
+          "top_right": [
+            250.0000001,
+            250.0000001
+          ],
+          "top_left": [
+            -250.0000001,
+            250.0000001
+          ]
+        }
+      },
+      "dimensions": [
+        {
+          "id": "dim_length_top",
+          "type": "LINEAR",
+          "name": "LENGTH",
+          "value": 500.0000002,
+          "view": "TOP",
+          "target_feature_id": null,
+          "points": {
+            "start": [
+              -250.0000001,
+              -250.0000001
+            ],
+            "end": [
+              250.0000001,
+              -250.0000001
+            ]
+          },
+          "placement_hint": "below_outline"
+        },
+        {
+          "id": "dim_width_top",
+          "type": "LINEAR",
+          "name": "WIDTH",
+          "value": 500.0000002,
+          "view": "TOP",
+          "target_feature_id": null,
+          "points": {
+            "start": [
+              -250.0000001,
+              -250.0000001
+            ],
+            "end": [
+              -250.0000001,
+              250.0000001
+            ]
+          },
+          "placement_hint": "left_of_outline"
+        },
+        {
+          "id": "dim_hole_1_diameter",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_1",
+          "points": {
+            "center": [
+              -53.138147554,
+              -18.144543633
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "dim_hole_1_center_mark",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER_MARK",
+          "value": 0.0,
+          "view": "TOP",
+          "target_feature_id": "hole_1",
+          "points": {
+            "center": [
+              -53.138147554,
+              -18.144543633
+            ],
+            "horizontal": {
+              "start": [
+                -58.138147554,
+                -18.144543633
+              ],
+              "end": [
+                -48.138147554,
+                -18.144543633
+              ]
+            },
+            "vertical": {
+              "start": [
+                -53.138147554,
+                -23.144543633
+              ],
+              "end": [
+                -53.138147554,
+                -13.144543633000001
+              ]
+            }
+          },
+          "placement_hint": "at_hole_center"
+        },
+        {
+          "id": "dim_hole_1_center_x",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_X",
+          "value": 196.861852546,
+          "view": "TOP",
+          "target_feature_id": "hole_1",
+          "points": {
+            "start": [
+              -250.0000001,
+              -18.144543633
+            ],
+            "end": [
+              -53.138147554,
+              -18.144543633
+            ],
+            "reference": "left_bbox_edge"
+          },
+          "placement_hint": "horizontal_hole_location"
+        },
+        {
+          "id": "dim_hole_1_center_y",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_Y",
+          "value": 231.85545646699998,
+          "view": "TOP",
+          "target_feature_id": "hole_1",
+          "points": {
+            "start": [
+              -53.138147554,
+              -250.0000001
+            ],
+            "end": [
+              -53.138147554,
+              -18.144543633
+            ],
+            "reference": "bottom_bbox_edge"
+          },
+          "placement_hint": "vertical_hole_location"
+        },
+        {
+          "id": "dim_hole_2_diameter",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_2",
+          "points": {
+            "center": [
+              -38.160423278,
+              78.930109929
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "dim_hole_2_center_mark",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER_MARK",
+          "value": 0.0,
+          "view": "TOP",
+          "target_feature_id": "hole_2",
+          "points": {
+            "center": [
+              -38.160423278,
+              78.930109929
+            ],
+            "horizontal": {
+              "start": [
+                -43.160423278,
+                78.930109929
+              ],
+              "end": [
+                -33.160423278,
+                78.930109929
+              ]
+            },
+            "vertical": {
+              "start": [
+                -38.160423278,
+                73.930109929
+              ],
+              "end": [
+                -38.160423278,
+                83.930109929
+              ]
+            }
+          },
+          "placement_hint": "at_hole_center"
+        },
+        {
+          "id": "dim_hole_2_center_x",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_X",
+          "value": 211.839576822,
+          "view": "TOP",
+          "target_feature_id": "hole_2",
+          "points": {
+            "start": [
+              -250.0000001,
+              78.930109929
+            ],
+            "end": [
+              -38.160423278,
+              78.930109929
+            ],
+            "reference": "left_bbox_edge"
+          },
+          "placement_hint": "horizontal_hole_location"
+        },
+        {
+          "id": "dim_hole_2_center_y",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_Y",
+          "value": 328.930110029,
+          "view": "TOP",
+          "target_feature_id": "hole_2",
+          "points": {
+            "start": [
+              -38.160423278,
+              -250.0000001
+            ],
+            "end": [
+              -38.160423278,
+              78.930109929
+            ],
+            "reference": "bottom_bbox_edge"
+          },
+          "placement_hint": "vertical_hole_location"
+        },
+        {
+          "id": "dim_hole_3_diameter",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_3",
+          "points": {
+            "center": [
+              59.342806812,
+              -21.861447684
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "dim_hole_3_center_mark",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER_MARK",
+          "value": 0.0,
+          "view": "TOP",
+          "target_feature_id": "hole_3",
+          "points": {
+            "center": [
+              59.342806812,
+              -21.861447684
+            ],
+            "horizontal": {
+              "start": [
+                54.342806812,
+                -21.861447684
+              ],
+              "end": [
+                64.34280681199999,
+                -21.861447684
+              ]
+            },
+            "vertical": {
+              "start": [
+                59.342806812,
+                -26.861447684
+              ],
+              "end": [
+                59.342806812,
+                -16.861447684
+              ]
+            }
+          },
+          "placement_hint": "at_hole_center"
+        },
+        {
+          "id": "dim_hole_3_center_x",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_X",
+          "value": 309.342806912,
+          "view": "TOP",
+          "target_feature_id": "hole_3",
+          "points": {
+            "start": [
+              -250.0000001,
+              -21.861447684
+            ],
+            "end": [
+              59.342806812,
+              -21.861447684
+            ],
+            "reference": "left_bbox_edge"
+          },
+          "placement_hint": "horizontal_hole_location"
+        },
+        {
+          "id": "dim_hole_3_center_y",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_Y",
+          "value": 228.13855241599998,
+          "view": "TOP",
+          "target_feature_id": "hole_3",
+          "points": {
+            "start": [
+              59.342806812,
+              -250.0000001
+            ],
+            "end": [
+              59.342806812,
+              -21.861447684
+            ],
+            "reference": "bottom_bbox_edge"
+          },
+          "placement_hint": "vertical_hole_location"
+        },
+        {
+          "id": "dim_hole_4_diameter",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_4",
+          "points": {
+            "center": [
+              -122.803774096,
+              -100.443165698
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "dim_hole_4_center_mark",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER_MARK",
+          "value": 0.0,
+          "view": "TOP",
+          "target_feature_id": "hole_4",
+          "points": {
+            "center": [
+              -122.803774096,
+              -100.443165698
+            ],
+            "horizontal": {
+              "start": [
+                -127.803774096,
+                -100.443165698
+              ],
+              "end": [
+                -117.803774096,
+                -100.443165698
+              ]
+            },
+            "vertical": {
+              "start": [
+                -122.803774096,
+                -105.443165698
+              ],
+              "end": [
+                -122.803774096,
+                -95.443165698
+              ]
+            }
+          },
+          "placement_hint": "at_hole_center"
+        },
+        {
+          "id": "dim_hole_4_center_x",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_X",
+          "value": 127.196226004,
+          "view": "TOP",
+          "target_feature_id": "hole_4",
+          "points": {
+            "start": [
+              -250.0000001,
+              -100.443165698
+            ],
+            "end": [
+              -122.803774096,
+              -100.443165698
+            ],
+            "reference": "left_bbox_edge"
+          },
+          "placement_hint": "horizontal_hole_location"
+        },
+        {
+          "id": "dim_hole_4_center_y",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_Y",
+          "value": 149.556834402,
+          "view": "TOP",
+          "target_feature_id": "hole_4",
+          "points": {
+            "start": [
+              -122.803774096,
+              -250.0000001
+            ],
+            "end": [
+              -122.803774096,
+              -100.443165698
+            ],
+            "reference": "bottom_bbox_edge"
+          },
+          "placement_hint": "vertical_hole_location"
+        },
+        {
+          "id": "dim_hole_5_diameter",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_5",
+          "points": {
+            "center": [
+              93.765992107,
+              106.083771434
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "dim_hole_5_center_mark",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER_MARK",
+          "value": 0.0,
+          "view": "TOP",
+          "target_feature_id": "hole_5",
+          "points": {
+            "center": [
+              93.765992107,
+              106.083771434
+            ],
+            "horizontal": {
+              "start": [
+                88.765992107,
+                106.083771434
+              ],
+              "end": [
+                98.765992107,
+                106.083771434
+              ]
+            },
+            "vertical": {
+              "start": [
+                93.765992107,
+                101.083771434
+              ],
+              "end": [
+                93.765992107,
+                111.083771434
+              ]
+            }
+          },
+          "placement_hint": "at_hole_center"
+        },
+        {
+          "id": "dim_hole_5_center_x",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_X",
+          "value": 343.765992207,
+          "view": "TOP",
+          "target_feature_id": "hole_5",
+          "points": {
+            "start": [
+              -250.0000001,
+              106.083771434
+            ],
+            "end": [
+              93.765992107,
+              106.083771434
+            ],
+            "reference": "left_bbox_edge"
+          },
+          "placement_hint": "horizontal_hole_location"
+        },
+        {
+          "id": "dim_hole_5_center_y",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_Y",
+          "value": 356.083771534,
+          "view": "TOP",
+          "target_feature_id": "hole_5",
+          "points": {
+            "start": [
+              93.765992107,
+              -250.0000001
+            ],
+            "end": [
+              93.765992107,
+              106.083771434
+            ],
+            "reference": "bottom_bbox_edge"
+          },
+          "placement_hint": "vertical_hole_location"
+        },
+        {
+          "id": "dim_hole_6_diameter",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_6",
+          "points": {
+            "center": [
+              107.16669538,
+              -67.802595687
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "dim_hole_6_center_mark",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER_MARK",
+          "value": 0.0,
+          "view": "TOP",
+          "target_feature_id": "hole_6",
+          "points": {
+            "center": [
+              107.16669538,
+              -67.802595687
+            ],
+            "horizontal": {
+              "start": [
+                102.16669538,
+                -67.802595687
+              ],
+              "end": [
+                112.16669538,
+                -67.802595687
+              ]
+            },
+            "vertical": {
+              "start": [
+                107.16669538,
+                -72.802595687
+              ],
+              "end": [
+                107.16669538,
+                -62.80259568699999
+              ]
+            }
+          },
+          "placement_hint": "at_hole_center"
+        },
+        {
+          "id": "dim_hole_6_center_x",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_X",
+          "value": 357.16669548,
+          "view": "TOP",
+          "target_feature_id": "hole_6",
+          "points": {
+            "start": [
+              -250.0000001,
+              -67.802595687
+            ],
+            "end": [
+              107.16669538,
+              -67.802595687
+            ],
+            "reference": "left_bbox_edge"
+          },
+          "placement_hint": "horizontal_hole_location"
+        },
+        {
+          "id": "dim_hole_6_center_y",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_Y",
+          "value": 182.19740441300002,
+          "view": "TOP",
+          "target_feature_id": "hole_6",
+          "points": {
+            "start": [
+              107.16669538,
+              -250.0000001
+            ],
+            "end": [
+              107.16669538,
+              -67.802595687
+            ],
+            "reference": "bottom_bbox_edge"
+          },
+          "placement_hint": "vertical_hole_location"
+        },
+        {
+          "id": "dim_hole_7_diameter",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_7",
+          "points": {
+            "center": [
+              -138.107800979,
+              59.203984815
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "dim_hole_7_center_mark",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER_MARK",
+          "value": 0.0,
+          "view": "TOP",
+          "target_feature_id": "hole_7",
+          "points": {
+            "center": [
+              -138.107800979,
+              59.203984815
+            ],
+            "horizontal": {
+              "start": [
+                -143.107800979,
+                59.203984815
+              ],
+              "end": [
+                -133.107800979,
+                59.203984815
+              ]
+            },
+            "vertical": {
+              "start": [
+                -138.107800979,
+                54.203984815
+              ],
+              "end": [
+                -138.107800979,
+                64.203984815
+              ]
+            }
+          },
+          "placement_hint": "at_hole_center"
+        },
+        {
+          "id": "dim_hole_7_center_x",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_X",
+          "value": 111.892199121,
+          "view": "TOP",
+          "target_feature_id": "hole_7",
+          "points": {
+            "start": [
+              -250.0000001,
+              59.203984815
+            ],
+            "end": [
+              -138.107800979,
+              59.203984815
+            ],
+            "reference": "left_bbox_edge"
+          },
+          "placement_hint": "horizontal_hole_location"
+        },
+        {
+          "id": "dim_hole_7_center_y",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_Y",
+          "value": 309.203984915,
+          "view": "TOP",
+          "target_feature_id": "hole_7",
+          "points": {
+            "start": [
+              -138.107800979,
+              -250.0000001
+            ],
+            "end": [
+              -138.107800979,
+              59.203984815
+            ],
+            "reference": "bottom_bbox_edge"
+          },
+          "placement_hint": "vertical_hole_location"
+        },
+        {
+          "id": "dim_hole_8_diameter",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_8",
+          "points": {
+            "center": [
+              4.513942176,
+              -101.256613859
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "dim_hole_8_center_mark",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER_MARK",
+          "value": 0.0,
+          "view": "TOP",
+          "target_feature_id": "hole_8",
+          "points": {
+            "center": [
+              4.513942176,
+              -101.256613859
+            ],
+            "horizontal": {
+              "start": [
+                -0.4860578240000004,
+                -101.256613859
+              ],
+              "end": [
+                9.513942176,
+                -101.256613859
+              ]
+            },
+            "vertical": {
+              "start": [
+                4.513942176,
+                -106.256613859
+              ],
+              "end": [
+                4.513942176,
+                -96.256613859
+              ]
+            }
+          },
+          "placement_hint": "at_hole_center"
+        },
+        {
+          "id": "dim_hole_8_center_x",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_X",
+          "value": 254.513942276,
+          "view": "TOP",
+          "target_feature_id": "hole_8",
+          "points": {
+            "start": [
+              -250.0000001,
+              -101.256613859
+            ],
+            "end": [
+              4.513942176,
+              -101.256613859
+            ],
+            "reference": "left_bbox_edge"
+          },
+          "placement_hint": "horizontal_hole_location"
+        },
+        {
+          "id": "dim_hole_8_center_y",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_Y",
+          "value": 148.743386241,
+          "view": "TOP",
+          "target_feature_id": "hole_8",
+          "points": {
+            "start": [
+              4.513942176,
+              -250.0000001
+            ],
+            "end": [
+              4.513942176,
+              -101.256613859
+            ],
+            "reference": "bottom_bbox_edge"
+          },
+          "placement_hint": "vertical_hole_location"
+        },
+        {
+          "id": "dim_hole_9_diameter",
+          "type": "DIAMETER",
+          "name": "HOLE_DIAMETER",
+          "value": 10.0,
+          "view": "TOP",
+          "target_feature_id": "hole_9",
+          "points": {
+            "center": [
+              -11.718365287,
+              -183.62404443
+            ]
+          },
+          "placement_hint": "near_hole"
+        },
+        {
+          "id": "dim_hole_9_center_mark",
+          "type": "CENTER_MARK",
+          "name": "HOLE_CENTER_MARK",
+          "value": 0.0,
+          "view": "TOP",
+          "target_feature_id": "hole_9",
+          "points": {
+            "center": [
+              -11.718365287,
+              -183.62404443
+            ],
+            "horizontal": {
+              "start": [
+                -16.718365286999997,
+                -183.62404443
+              ],
+              "end": [
+                -6.718365286999999,
+                -183.62404443
+              ]
+            },
+            "vertical": {
+              "start": [
+                -11.718365287,
+                -188.62404443
+              ],
+              "end": [
+                -11.718365287,
+                -178.62404443
+              ]
+            }
+          },
+          "placement_hint": "at_hole_center"
+        },
+        {
+          "id": "dim_hole_9_center_x",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_X",
+          "value": 238.28163481299998,
+          "view": "TOP",
+          "target_feature_id": "hole_9",
+          "points": {
+            "start": [
+              -250.0000001,
+              -183.62404443
+            ],
+            "end": [
+              -11.718365287,
+              -183.62404443
+            ],
+            "reference": "left_bbox_edge"
+          },
+          "placement_hint": "horizontal_hole_location"
+        },
+        {
+          "id": "dim_hole_9_center_y",
+          "type": "LINEAR",
+          "name": "HOLE_CENTER_Y",
+          "value": 66.37595567,
+          "view": "TOP",
+          "target_feature_id": "hole_9",
+          "points": {
+            "start": [
+              -11.718365287,
+              -250.0000001
+            ],
+            "end": [
+              -11.718365287,
+              -183.62404443
+            ],
+            "reference": "bottom_bbox_edge"
+          },
+          "placement_hint": "vertical_hole_location"
+        },
+        {
+          "id": "dim_outer_cylinder_1_diameter_top",
+          "type": "DIAMETER",
+          "name": "OUTER_DIAMETER",
+          "value": 500.0,
+          "view": "TOP",
+          "target_feature_id": "outer_cylinder_1",
+          "points": {
+            "center": [
+              0.0,
+              0.0
+            ]
+          },
+          "placement_hint": "outside_outline"
+        }
+      ],
+      "notes": []
+    },
+    "FRONT": {
+      "name": "FRONT",
+      "projection_plane": "XZ",
+      "visible_axes": [
+        "X",
+        "Z"
+      ],
+      "origin_3d": [
+        -250.0000001,
+        -250.0000001,
+        -1e-07
+      ],
+      "view_bbox_2d": {
+        "min": [
+          -250.0000001,
+          -1e-07
+        ],
+        "max": [
+          250.0000001,
+          10.0000001
+        ],
+        "size": [
+          500.0000002,
+          10.000000199999999
+        ],
+        "center": [
+          0.0,
+          5.0
+        ]
+      },
+      "outline": {
+        "type": "RECTANGLE",
+        "source": "bbox_xz",
+        "points": [
+          [
+            -250.0000001,
+            -1e-07
+          ],
+          [
+            250.0000001,
+            -1e-07
+          ],
+          [
+            250.0000001,
+            10.0000001
+          ],
+          [
+            -250.0000001,
+            10.0000001
+          ]
+        ]
+      },
+      "features": [
+        {
+          "id": "hole_1",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_1",
+          "center_3d": [
+            -53.138147554,
+            -18.144543633,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -53.138147554,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -53.138147554,
+              0.0
+            ],
+            "left": [
+              -58.138147554,
+              0.0
+            ],
+            "right": [
+              -48.138147554,
+              0.0
+            ],
+            "top": [
+              -53.138147554,
+              5.0
+            ],
+            "bottom": [
+              -53.138147554,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -58.138147554,
+                0.0
+              ],
+              "end": [
+                -48.138147554,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -53.138147554,
+                -5.0
+              ],
+              "end": [
+                -53.138147554,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_2",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_2",
+          "center_3d": [
+            -38.160423278,
+            78.930109929,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -38.160423278,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -38.160423278,
+              0.0
+            ],
+            "left": [
+              -43.160423278,
+              0.0
+            ],
+            "right": [
+              -33.160423278,
+              0.0
+            ],
+            "top": [
+              -38.160423278,
+              5.0
+            ],
+            "bottom": [
+              -38.160423278,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -43.160423278,
+                0.0
+              ],
+              "end": [
+                -33.160423278,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -38.160423278,
+                -5.0
+              ],
+              "end": [
+                -38.160423278,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_3",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_3",
+          "center_3d": [
+            59.342806812,
+            -21.861447684,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            59.342806812,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              59.342806812,
+              0.0
+            ],
+            "left": [
+              54.342806812,
+              0.0
+            ],
+            "right": [
+              64.34280681199999,
+              0.0
+            ],
+            "top": [
+              59.342806812,
+              5.0
+            ],
+            "bottom": [
+              59.342806812,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                54.342806812,
+                0.0
+              ],
+              "end": [
+                64.34280681199999,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                59.342806812,
+                -5.0
+              ],
+              "end": [
+                59.342806812,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_4",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_4",
+          "center_3d": [
+            -122.803774096,
+            -100.443165698,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -122.803774096,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -122.803774096,
+              0.0
+            ],
+            "left": [
+              -127.803774096,
+              0.0
+            ],
+            "right": [
+              -117.803774096,
+              0.0
+            ],
+            "top": [
+              -122.803774096,
+              5.0
+            ],
+            "bottom": [
+              -122.803774096,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -127.803774096,
+                0.0
+              ],
+              "end": [
+                -117.803774096,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -122.803774096,
+                -5.0
+              ],
+              "end": [
+                -122.803774096,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_5",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_5",
+          "center_3d": [
+            93.765992107,
+            106.083771434,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            93.765992107,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              93.765992107,
+              0.0
+            ],
+            "left": [
+              88.765992107,
+              0.0
+            ],
+            "right": [
+              98.765992107,
+              0.0
+            ],
+            "top": [
+              93.765992107,
+              5.0
+            ],
+            "bottom": [
+              93.765992107,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                88.765992107,
+                0.0
+              ],
+              "end": [
+                98.765992107,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                93.765992107,
+                -5.0
+              ],
+              "end": [
+                93.765992107,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_6",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_6",
+          "center_3d": [
+            107.16669538,
+            -67.802595687,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            107.16669538,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              107.16669538,
+              0.0
+            ],
+            "left": [
+              102.16669538,
+              0.0
+            ],
+            "right": [
+              112.16669538,
+              0.0
+            ],
+            "top": [
+              107.16669538,
+              5.0
+            ],
+            "bottom": [
+              107.16669538,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                102.16669538,
+                0.0
+              ],
+              "end": [
+                112.16669538,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                107.16669538,
+                -5.0
+              ],
+              "end": [
+                107.16669538,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_7",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_7",
+          "center_3d": [
+            -138.107800979,
+            59.203984815,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -138.107800979,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -138.107800979,
+              0.0
+            ],
+            "left": [
+              -143.107800979,
+              0.0
+            ],
+            "right": [
+              -133.107800979,
+              0.0
+            ],
+            "top": [
+              -138.107800979,
+              5.0
+            ],
+            "bottom": [
+              -138.107800979,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -143.107800979,
+                0.0
+              ],
+              "end": [
+                -133.107800979,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -138.107800979,
+                -5.0
+              ],
+              "end": [
+                -138.107800979,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_8",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_8",
+          "center_3d": [
+            4.513942176,
+            -101.256613859,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            4.513942176,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              4.513942176,
+              0.0
+            ],
+            "left": [
+              -0.4860578240000004,
+              0.0
+            ],
+            "right": [
+              9.513942176,
+              0.0
+            ],
+            "top": [
+              4.513942176,
+              5.0
+            ],
+            "bottom": [
+              4.513942176,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -0.4860578240000004,
+                0.0
+              ],
+              "end": [
+                9.513942176,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                4.513942176,
+                -5.0
+              ],
+              "end": [
+                4.513942176,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_9",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_9",
+          "center_3d": [
+            -11.718365287,
+            -183.62404443,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -11.718365287,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -11.718365287,
+              0.0
+            ],
+            "left": [
+              -16.718365286999997,
+              0.0
+            ],
+            "right": [
+              -6.718365286999999,
+              0.0
+            ],
+            "top": [
+              -11.718365287,
+              5.0
+            ],
+            "bottom": [
+              -11.718365287,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -16.718365286999997,
+                0.0
+              ],
+              "end": [
+                -6.718365286999999,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -11.718365287,
+                -5.0
+              ],
+              "end": [
+                -11.718365287,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        }
+      ],
+      "anchor_points": {
+        "bbox_min": [
+          -250.0000001,
+          -1e-07
+        ],
+        "bbox_max": [
+          250.0000001,
+          10.0000001
+        ],
+        "bbox_center": [
+          0.0,
+          5.0
+        ],
+        "left_mid": [
+          -250.0000001,
+          5.0
+        ],
+        "right_mid": [
+          250.0000001,
+          5.0
+        ],
+        "top_mid": [
+          0.0,
+          10.0000001
+        ],
+        "bottom_mid": [
+          0.0,
+          -1e-07
+        ],
+        "corners": {
+          "bottom_left": [
+            -250.0000001,
+            -1e-07
+          ],
+          "bottom_right": [
+            250.0000001,
+            -1e-07
+          ],
+          "top_right": [
+            250.0000001,
+            10.0000001
+          ],
+          "top_left": [
+            -250.0000001,
+            10.0000001
+          ]
+        }
+      },
+      "dimensions": [
+        {
+          "id": "dim_thickness_front",
+          "type": "LINEAR",
+          "name": "THICKNESS",
+          "value": 10.000000199999999,
+          "view": "FRONT",
+          "target_feature_id": null,
+          "points": {
+            "start": [
+              250.0000001,
+              -1e-07
+            ],
+            "end": [
+              250.0000001,
+              10.0000001
+            ]
+          },
+          "placement_hint": "right_of_outline"
+        },
+        {
+          "id": "dim_outer_cylinder_1_height_front",
+          "type": "LINEAR",
+          "name": "CYLINDER_HEIGHT",
+          "value": 10.0,
+          "view": "FRONT",
+          "target_feature_id": "outer_cylinder_1",
+          "points": {
+            "start": [
+              0.0,
+              -1e-07
+            ],
+            "end": [
+              0.0,
+              10.0000001
+            ]
+          },
+          "placement_hint": "along_cylinder_axis"
+        }
+      ],
+      "notes": []
+    },
+    "LEFT": {
+      "name": "LEFT",
+      "projection_plane": "YZ",
+      "visible_axes": [
+        "Y",
+        "Z"
+      ],
+      "origin_3d": [
+        -250.0000001,
+        -250.0000001,
+        -1e-07
+      ],
+      "view_bbox_2d": {
+        "min": [
+          -250.0000001,
+          -1e-07
+        ],
+        "max": [
+          250.0000001,
+          10.0000001
+        ],
+        "size": [
+          500.0000002,
+          10.000000199999999
+        ],
+        "center": [
+          0.0,
+          5.0
+        ]
+      },
+      "outline": {
+        "type": "RECTANGLE",
+        "source": "bbox_yz",
+        "points": [
+          [
+            -250.0000001,
+            -1e-07
+          ],
+          [
+            250.0000001,
+            -1e-07
+          ],
+          [
+            250.0000001,
+            10.0000001
+          ],
+          [
+            -250.0000001,
+            10.0000001
+          ]
+        ]
+      },
+      "features": [
+        {
+          "id": "hole_1",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_1",
+          "center_3d": [
+            -53.138147554,
+            -18.144543633,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -18.144543633,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -18.144543633,
+              0.0
+            ],
+            "left": [
+              -23.144543633,
+              0.0
+            ],
+            "right": [
+              -13.144543633000001,
+              0.0
+            ],
+            "top": [
+              -18.144543633,
+              5.0
+            ],
+            "bottom": [
+              -18.144543633,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -23.144543633,
+                0.0
+              ],
+              "end": [
+                -13.144543633000001,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -18.144543633,
+                -5.0
+              ],
+              "end": [
+                -18.144543633,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_2",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_2",
+          "center_3d": [
+            -38.160423278,
+            78.930109929,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            78.930109929,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              78.930109929,
+              0.0
+            ],
+            "left": [
+              73.930109929,
+              0.0
+            ],
+            "right": [
+              83.930109929,
+              0.0
+            ],
+            "top": [
+              78.930109929,
+              5.0
+            ],
+            "bottom": [
+              78.930109929,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                73.930109929,
+                0.0
+              ],
+              "end": [
+                83.930109929,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                78.930109929,
+                -5.0
+              ],
+              "end": [
+                78.930109929,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_3",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_3",
+          "center_3d": [
+            59.342806812,
+            -21.861447684,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -21.861447684,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -21.861447684,
+              0.0
+            ],
+            "left": [
+              -26.861447684,
+              0.0
+            ],
+            "right": [
+              -16.861447684,
+              0.0
+            ],
+            "top": [
+              -21.861447684,
+              5.0
+            ],
+            "bottom": [
+              -21.861447684,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -26.861447684,
+                0.0
+              ],
+              "end": [
+                -16.861447684,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -21.861447684,
+                -5.0
+              ],
+              "end": [
+                -21.861447684,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_4",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_4",
+          "center_3d": [
+            -122.803774096,
+            -100.443165698,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -100.443165698,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -100.443165698,
+              0.0
+            ],
+            "left": [
+              -105.443165698,
+              0.0
+            ],
+            "right": [
+              -95.443165698,
+              0.0
+            ],
+            "top": [
+              -100.443165698,
+              5.0
+            ],
+            "bottom": [
+              -100.443165698,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -105.443165698,
+                0.0
+              ],
+              "end": [
+                -95.443165698,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -100.443165698,
+                -5.0
+              ],
+              "end": [
+                -100.443165698,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_5",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_5",
+          "center_3d": [
+            93.765992107,
+            106.083771434,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            106.083771434,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              106.083771434,
+              0.0
+            ],
+            "left": [
+              101.083771434,
+              0.0
+            ],
+            "right": [
+              111.083771434,
+              0.0
+            ],
+            "top": [
+              106.083771434,
+              5.0
+            ],
+            "bottom": [
+              106.083771434,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                101.083771434,
+                0.0
+              ],
+              "end": [
+                111.083771434,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                106.083771434,
+                -5.0
+              ],
+              "end": [
+                106.083771434,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_6",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_6",
+          "center_3d": [
+            107.16669538,
+            -67.802595687,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -67.802595687,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -67.802595687,
+              0.0
+            ],
+            "left": [
+              -72.802595687,
+              0.0
+            ],
+            "right": [
+              -62.80259568699999,
+              0.0
+            ],
+            "top": [
+              -67.802595687,
+              5.0
+            ],
+            "bottom": [
+              -67.802595687,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -72.802595687,
+                0.0
+              ],
+              "end": [
+                -62.80259568699999,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -67.802595687,
+                -5.0
+              ],
+              "end": [
+                -67.802595687,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_7",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_7",
+          "center_3d": [
+            -138.107800979,
+            59.203984815,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            59.203984815,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              59.203984815,
+              0.0
+            ],
+            "left": [
+              54.203984815,
+              0.0
+            ],
+            "right": [
+              64.203984815,
+              0.0
+            ],
+            "top": [
+              59.203984815,
+              5.0
+            ],
+            "bottom": [
+              59.203984815,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                54.203984815,
+                0.0
+              ],
+              "end": [
+                64.203984815,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                59.203984815,
+                -5.0
+              ],
+              "end": [
+                59.203984815,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_8",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_8",
+          "center_3d": [
+            4.513942176,
+            -101.256613859,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -101.256613859,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -101.256613859,
+              0.0
+            ],
+            "left": [
+              -106.256613859,
+              0.0
+            ],
+            "right": [
+              -96.256613859,
+              0.0
+            ],
+            "top": [
+              -101.256613859,
+              5.0
+            ],
+            "bottom": [
+              -101.256613859,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -106.256613859,
+                0.0
+              ],
+              "end": [
+                -96.256613859,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -101.256613859,
+                -5.0
+              ],
+              "end": [
+                -101.256613859,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        },
+        {
+          "id": "hole_9",
+          "type": "HOLE",
+          "shape": "CIRCLE",
+          "source_feature_3d": "hole_9",
+          "center_3d": [
+            -11.718365287,
+            -183.62404443,
+            0.0
+          ],
+          "axis_direction": [
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "center": [
+            -183.62404443,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -183.62404443,
+              0.0
+            ],
+            "left": [
+              -188.62404443,
+              0.0
+            ],
+            "right": [
+              -178.62404443,
+              0.0
+            ],
+            "top": [
+              -183.62404443,
+              5.0
+            ],
+            "bottom": [
+              -183.62404443,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -188.62404443,
+                0.0
+              ],
+              "end": [
+                -178.62404443,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -183.62404443,
+                -5.0
+              ],
+              "end": [
+                -183.62404443,
+                5.0
+              ]
+            }
+          ],
+          "style_hint": "projected_centerline"
+        }
+      ],
+      "anchor_points": {
+        "bbox_min": [
+          -250.0000001,
+          -1e-07
+        ],
+        "bbox_max": [
+          250.0000001,
+          10.0000001
+        ],
+        "bbox_center": [
+          0.0,
+          5.0
+        ],
+        "left_mid": [
+          -250.0000001,
+          5.0
+        ],
+        "right_mid": [
+          250.0000001,
+          5.0
+        ],
+        "top_mid": [
+          0.0,
+          10.0000001
+        ],
+        "bottom_mid": [
+          0.0,
+          -1e-07
+        ],
+        "corners": {
+          "bottom_left": [
+            -250.0000001,
+            -1e-07
+          ],
+          "bottom_right": [
+            250.0000001,
+            -1e-07
+          ],
+          "top_right": [
+            250.0000001,
+            10.0000001
+          ],
+          "top_left": [
+            -250.0000001,
+            10.0000001
+          ]
+        }
+      },
+      "dimensions": [
+        {
+          "id": "dim_thickness_left",
+          "type": "LINEAR",
+          "name": "THICKNESS",
+          "value": 10.000000199999999,
+          "view": "LEFT",
+          "target_feature_id": null,
+          "points": {
+            "start": [
+              250.0000001,
+              -1e-07
+            ],
+            "end": [
+              250.0000001,
+              10.0000001
+            ]
+          },
+          "placement_hint": "right_of_outline"
+        },
+        {
+          "id": "dim_outer_cylinder_1_height_left",
+          "type": "LINEAR",
+          "name": "CYLINDER_HEIGHT",
+          "value": 10.0,
+          "view": "LEFT",
+          "target_feature_id": "outer_cylinder_1",
+          "points": {
+            "start": [
+              0.0,
+              -1e-07
+            ],
+            "end": [
+              0.0,
+              10.0000001
+            ]
+          },
+          "placement_hint": "along_cylinder_axis"
+        }
+      ],
+      "notes": []
+    }
+  },
+  "features_3d": [
+    {
+      "id": "hole_1",
+      "type": "HOLE",
+      "shape": "CIRCLE",
+      "center_3d": [
+        -53.138147554,
+        -18.144543633,
+        0.0
+      ],
+      "axis_direction": [
+        0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 5.0,
+      "diameter": 10.0,
+      "height": 10.0,
+      "source_face_id": 3,
+      "orientation": "REVERSED",
+      "projections": {
+        "TOP": {
+          "center": [
+            -53.138147554,
+            -18.144543633
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -53.138147554,
+              -18.144543633
+            ],
+            "left": [
+              -58.138147554,
+              -18.144543633
+            ],
+            "right": [
+              -48.138147554,
+              -18.144543633
+            ],
+            "top": [
+              -53.138147554,
+              -13.144543633000001
+            ],
+            "bottom": [
+              -53.138147554,
+              -23.144543633
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -58.138147554,
+                -18.144543633
+              ],
+              "end": [
+                -48.138147554,
+                -18.144543633
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -53.138147554,
+                -23.144543633
+              ],
+              "end": [
+                -53.138147554,
+                -13.144543633000001
+              ]
+            }
+          ]
+        },
+        "FRONT": {
+          "center": [
+            -53.138147554,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -53.138147554,
+              0.0
+            ],
+            "left": [
+              -58.138147554,
+              0.0
+            ],
+            "right": [
+              -48.138147554,
+              0.0
+            ],
+            "top": [
+              -53.138147554,
+              5.0
+            ],
+            "bottom": [
+              -53.138147554,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -58.138147554,
+                0.0
+              ],
+              "end": [
+                -48.138147554,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -53.138147554,
+                -5.0
+              ],
+              "end": [
+                -53.138147554,
+                5.0
+              ]
+            }
+          ]
+        },
+        "LEFT": {
+          "center": [
+            -18.144543633,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -18.144543633,
+              0.0
+            ],
+            "left": [
+              -23.144543633,
+              0.0
+            ],
+            "right": [
+              -13.144543633000001,
+              0.0
+            ],
+            "top": [
+              -18.144543633,
+              5.0
+            ],
+            "bottom": [
+              -18.144543633,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -23.144543633,
+                0.0
+              ],
+              "end": [
+                -13.144543633000001,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -18.144543633,
+                -5.0
+              ],
+              "end": [
+                -18.144543633,
+                5.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "hole_2",
+      "type": "HOLE",
+      "shape": "CIRCLE",
+      "center_3d": [
+        -38.160423278,
+        78.930109929,
+        0.0
+      ],
+      "axis_direction": [
+        0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 5.0,
+      "diameter": 10.0,
+      "height": 10.0,
+      "source_face_id": 4,
+      "orientation": "REVERSED",
+      "projections": {
+        "TOP": {
+          "center": [
+            -38.160423278,
+            78.930109929
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -38.160423278,
+              78.930109929
+            ],
+            "left": [
+              -43.160423278,
+              78.930109929
+            ],
+            "right": [
+              -33.160423278,
+              78.930109929
+            ],
+            "top": [
+              -38.160423278,
+              83.930109929
+            ],
+            "bottom": [
+              -38.160423278,
+              73.930109929
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -43.160423278,
+                78.930109929
+              ],
+              "end": [
+                -33.160423278,
+                78.930109929
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -38.160423278,
+                73.930109929
+              ],
+              "end": [
+                -38.160423278,
+                83.930109929
+              ]
+            }
+          ]
+        },
+        "FRONT": {
+          "center": [
+            -38.160423278,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -38.160423278,
+              0.0
+            ],
+            "left": [
+              -43.160423278,
+              0.0
+            ],
+            "right": [
+              -33.160423278,
+              0.0
+            ],
+            "top": [
+              -38.160423278,
+              5.0
+            ],
+            "bottom": [
+              -38.160423278,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -43.160423278,
+                0.0
+              ],
+              "end": [
+                -33.160423278,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -38.160423278,
+                -5.0
+              ],
+              "end": [
+                -38.160423278,
+                5.0
+              ]
+            }
+          ]
+        },
+        "LEFT": {
+          "center": [
+            78.930109929,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              78.930109929,
+              0.0
+            ],
+            "left": [
+              73.930109929,
+              0.0
+            ],
+            "right": [
+              83.930109929,
+              0.0
+            ],
+            "top": [
+              78.930109929,
+              5.0
+            ],
+            "bottom": [
+              78.930109929,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                73.930109929,
+                0.0
+              ],
+              "end": [
+                83.930109929,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                78.930109929,
+                -5.0
+              ],
+              "end": [
+                78.930109929,
+                5.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "hole_3",
+      "type": "HOLE",
+      "shape": "CIRCLE",
+      "center_3d": [
+        59.342806812,
+        -21.861447684,
+        0.0
+      ],
+      "axis_direction": [
+        0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 5.0,
+      "diameter": 10.0,
+      "height": 10.0,
+      "source_face_id": 5,
+      "orientation": "REVERSED",
+      "projections": {
+        "TOP": {
+          "center": [
+            59.342806812,
+            -21.861447684
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              59.342806812,
+              -21.861447684
+            ],
+            "left": [
+              54.342806812,
+              -21.861447684
+            ],
+            "right": [
+              64.34280681199999,
+              -21.861447684
+            ],
+            "top": [
+              59.342806812,
+              -16.861447684
+            ],
+            "bottom": [
+              59.342806812,
+              -26.861447684
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                54.342806812,
+                -21.861447684
+              ],
+              "end": [
+                64.34280681199999,
+                -21.861447684
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                59.342806812,
+                -26.861447684
+              ],
+              "end": [
+                59.342806812,
+                -16.861447684
+              ]
+            }
+          ]
+        },
+        "FRONT": {
+          "center": [
+            59.342806812,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              59.342806812,
+              0.0
+            ],
+            "left": [
+              54.342806812,
+              0.0
+            ],
+            "right": [
+              64.34280681199999,
+              0.0
+            ],
+            "top": [
+              59.342806812,
+              5.0
+            ],
+            "bottom": [
+              59.342806812,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                54.342806812,
+                0.0
+              ],
+              "end": [
+                64.34280681199999,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                59.342806812,
+                -5.0
+              ],
+              "end": [
+                59.342806812,
+                5.0
+              ]
+            }
+          ]
+        },
+        "LEFT": {
+          "center": [
+            -21.861447684,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -21.861447684,
+              0.0
+            ],
+            "left": [
+              -26.861447684,
+              0.0
+            ],
+            "right": [
+              -16.861447684,
+              0.0
+            ],
+            "top": [
+              -21.861447684,
+              5.0
+            ],
+            "bottom": [
+              -21.861447684,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -26.861447684,
+                0.0
+              ],
+              "end": [
+                -16.861447684,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -21.861447684,
+                -5.0
+              ],
+              "end": [
+                -21.861447684,
+                5.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "hole_4",
+      "type": "HOLE",
+      "shape": "CIRCLE",
+      "center_3d": [
+        -122.803774096,
+        -100.443165698,
+        0.0
+      ],
+      "axis_direction": [
+        0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 5.0,
+      "diameter": 10.0,
+      "height": 10.0,
+      "source_face_id": 6,
+      "orientation": "REVERSED",
+      "projections": {
+        "TOP": {
+          "center": [
+            -122.803774096,
+            -100.443165698
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -122.803774096,
+              -100.443165698
+            ],
+            "left": [
+              -127.803774096,
+              -100.443165698
+            ],
+            "right": [
+              -117.803774096,
+              -100.443165698
+            ],
+            "top": [
+              -122.803774096,
+              -95.443165698
+            ],
+            "bottom": [
+              -122.803774096,
+              -105.443165698
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -127.803774096,
+                -100.443165698
+              ],
+              "end": [
+                -117.803774096,
+                -100.443165698
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -122.803774096,
+                -105.443165698
+              ],
+              "end": [
+                -122.803774096,
+                -95.443165698
+              ]
+            }
+          ]
+        },
+        "FRONT": {
+          "center": [
+            -122.803774096,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -122.803774096,
+              0.0
+            ],
+            "left": [
+              -127.803774096,
+              0.0
+            ],
+            "right": [
+              -117.803774096,
+              0.0
+            ],
+            "top": [
+              -122.803774096,
+              5.0
+            ],
+            "bottom": [
+              -122.803774096,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -127.803774096,
+                0.0
+              ],
+              "end": [
+                -117.803774096,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -122.803774096,
+                -5.0
+              ],
+              "end": [
+                -122.803774096,
+                5.0
+              ]
+            }
+          ]
+        },
+        "LEFT": {
+          "center": [
+            -100.443165698,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -100.443165698,
+              0.0
+            ],
+            "left": [
+              -105.443165698,
+              0.0
+            ],
+            "right": [
+              -95.443165698,
+              0.0
+            ],
+            "top": [
+              -100.443165698,
+              5.0
+            ],
+            "bottom": [
+              -100.443165698,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -105.443165698,
+                0.0
+              ],
+              "end": [
+                -95.443165698,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -100.443165698,
+                -5.0
+              ],
+              "end": [
+                -100.443165698,
+                5.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "hole_5",
+      "type": "HOLE",
+      "shape": "CIRCLE",
+      "center_3d": [
+        93.765992107,
+        106.083771434,
+        0.0
+      ],
+      "axis_direction": [
+        0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 5.0,
+      "diameter": 10.0,
+      "height": 10.0,
+      "source_face_id": 7,
+      "orientation": "REVERSED",
+      "projections": {
+        "TOP": {
+          "center": [
+            93.765992107,
+            106.083771434
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              93.765992107,
+              106.083771434
+            ],
+            "left": [
+              88.765992107,
+              106.083771434
+            ],
+            "right": [
+              98.765992107,
+              106.083771434
+            ],
+            "top": [
+              93.765992107,
+              111.083771434
+            ],
+            "bottom": [
+              93.765992107,
+              101.083771434
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                88.765992107,
+                106.083771434
+              ],
+              "end": [
+                98.765992107,
+                106.083771434
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                93.765992107,
+                101.083771434
+              ],
+              "end": [
+                93.765992107,
+                111.083771434
+              ]
+            }
+          ]
+        },
+        "FRONT": {
+          "center": [
+            93.765992107,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              93.765992107,
+              0.0
+            ],
+            "left": [
+              88.765992107,
+              0.0
+            ],
+            "right": [
+              98.765992107,
+              0.0
+            ],
+            "top": [
+              93.765992107,
+              5.0
+            ],
+            "bottom": [
+              93.765992107,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                88.765992107,
+                0.0
+              ],
+              "end": [
+                98.765992107,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                93.765992107,
+                -5.0
+              ],
+              "end": [
+                93.765992107,
+                5.0
+              ]
+            }
+          ]
+        },
+        "LEFT": {
+          "center": [
+            106.083771434,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              106.083771434,
+              0.0
+            ],
+            "left": [
+              101.083771434,
+              0.0
+            ],
+            "right": [
+              111.083771434,
+              0.0
+            ],
+            "top": [
+              106.083771434,
+              5.0
+            ],
+            "bottom": [
+              106.083771434,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                101.083771434,
+                0.0
+              ],
+              "end": [
+                111.083771434,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                106.083771434,
+                -5.0
+              ],
+              "end": [
+                106.083771434,
+                5.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "hole_6",
+      "type": "HOLE",
+      "shape": "CIRCLE",
+      "center_3d": [
+        107.16669538,
+        -67.802595687,
+        0.0
+      ],
+      "axis_direction": [
+        0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 5.0,
+      "diameter": 10.0,
+      "height": 10.0,
+      "source_face_id": 8,
+      "orientation": "REVERSED",
+      "projections": {
+        "TOP": {
+          "center": [
+            107.16669538,
+            -67.802595687
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              107.16669538,
+              -67.802595687
+            ],
+            "left": [
+              102.16669538,
+              -67.802595687
+            ],
+            "right": [
+              112.16669538,
+              -67.802595687
+            ],
+            "top": [
+              107.16669538,
+              -62.80259568699999
+            ],
+            "bottom": [
+              107.16669538,
+              -72.802595687
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                102.16669538,
+                -67.802595687
+              ],
+              "end": [
+                112.16669538,
+                -67.802595687
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                107.16669538,
+                -72.802595687
+              ],
+              "end": [
+                107.16669538,
+                -62.80259568699999
+              ]
+            }
+          ]
+        },
+        "FRONT": {
+          "center": [
+            107.16669538,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              107.16669538,
+              0.0
+            ],
+            "left": [
+              102.16669538,
+              0.0
+            ],
+            "right": [
+              112.16669538,
+              0.0
+            ],
+            "top": [
+              107.16669538,
+              5.0
+            ],
+            "bottom": [
+              107.16669538,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                102.16669538,
+                0.0
+              ],
+              "end": [
+                112.16669538,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                107.16669538,
+                -5.0
+              ],
+              "end": [
+                107.16669538,
+                5.0
+              ]
+            }
+          ]
+        },
+        "LEFT": {
+          "center": [
+            -67.802595687,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -67.802595687,
+              0.0
+            ],
+            "left": [
+              -72.802595687,
+              0.0
+            ],
+            "right": [
+              -62.80259568699999,
+              0.0
+            ],
+            "top": [
+              -67.802595687,
+              5.0
+            ],
+            "bottom": [
+              -67.802595687,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -72.802595687,
+                0.0
+              ],
+              "end": [
+                -62.80259568699999,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -67.802595687,
+                -5.0
+              ],
+              "end": [
+                -67.802595687,
+                5.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "hole_7",
+      "type": "HOLE",
+      "shape": "CIRCLE",
+      "center_3d": [
+        -138.107800979,
+        59.203984815,
+        0.0
+      ],
+      "axis_direction": [
+        0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 5.0,
+      "diameter": 10.0,
+      "height": 10.0,
+      "source_face_id": 9,
+      "orientation": "REVERSED",
+      "projections": {
+        "TOP": {
+          "center": [
+            -138.107800979,
+            59.203984815
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -138.107800979,
+              59.203984815
+            ],
+            "left": [
+              -143.107800979,
+              59.203984815
+            ],
+            "right": [
+              -133.107800979,
+              59.203984815
+            ],
+            "top": [
+              -138.107800979,
+              64.203984815
+            ],
+            "bottom": [
+              -138.107800979,
+              54.203984815
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -143.107800979,
+                59.203984815
+              ],
+              "end": [
+                -133.107800979,
+                59.203984815
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -138.107800979,
+                54.203984815
+              ],
+              "end": [
+                -138.107800979,
+                64.203984815
+              ]
+            }
+          ]
+        },
+        "FRONT": {
+          "center": [
+            -138.107800979,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -138.107800979,
+              0.0
+            ],
+            "left": [
+              -143.107800979,
+              0.0
+            ],
+            "right": [
+              -133.107800979,
+              0.0
+            ],
+            "top": [
+              -138.107800979,
+              5.0
+            ],
+            "bottom": [
+              -138.107800979,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -143.107800979,
+                0.0
+              ],
+              "end": [
+                -133.107800979,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -138.107800979,
+                -5.0
+              ],
+              "end": [
+                -138.107800979,
+                5.0
+              ]
+            }
+          ]
+        },
+        "LEFT": {
+          "center": [
+            59.203984815,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              59.203984815,
+              0.0
+            ],
+            "left": [
+              54.203984815,
+              0.0
+            ],
+            "right": [
+              64.203984815,
+              0.0
+            ],
+            "top": [
+              59.203984815,
+              5.0
+            ],
+            "bottom": [
+              59.203984815,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                54.203984815,
+                0.0
+              ],
+              "end": [
+                64.203984815,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                59.203984815,
+                -5.0
+              ],
+              "end": [
+                59.203984815,
+                5.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "hole_8",
+      "type": "HOLE",
+      "shape": "CIRCLE",
+      "center_3d": [
+        4.513942176,
+        -101.256613859,
+        0.0
+      ],
+      "axis_direction": [
+        0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 5.0,
+      "diameter": 10.0,
+      "height": 10.0,
+      "source_face_id": 10,
+      "orientation": "REVERSED",
+      "projections": {
+        "TOP": {
+          "center": [
+            4.513942176,
+            -101.256613859
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              4.513942176,
+              -101.256613859
+            ],
+            "left": [
+              -0.4860578240000004,
+              -101.256613859
+            ],
+            "right": [
+              9.513942176,
+              -101.256613859
+            ],
+            "top": [
+              4.513942176,
+              -96.256613859
+            ],
+            "bottom": [
+              4.513942176,
+              -106.256613859
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -0.4860578240000004,
+                -101.256613859
+              ],
+              "end": [
+                9.513942176,
+                -101.256613859
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                4.513942176,
+                -106.256613859
+              ],
+              "end": [
+                4.513942176,
+                -96.256613859
+              ]
+            }
+          ]
+        },
+        "FRONT": {
+          "center": [
+            4.513942176,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              4.513942176,
+              0.0
+            ],
+            "left": [
+              -0.4860578240000004,
+              0.0
+            ],
+            "right": [
+              9.513942176,
+              0.0
+            ],
+            "top": [
+              4.513942176,
+              5.0
+            ],
+            "bottom": [
+              4.513942176,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -0.4860578240000004,
+                0.0
+              ],
+              "end": [
+                9.513942176,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                4.513942176,
+                -5.0
+              ],
+              "end": [
+                4.513942176,
+                5.0
+              ]
+            }
+          ]
+        },
+        "LEFT": {
+          "center": [
+            -101.256613859,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -101.256613859,
+              0.0
+            ],
+            "left": [
+              -106.256613859,
+              0.0
+            ],
+            "right": [
+              -96.256613859,
+              0.0
+            ],
+            "top": [
+              -101.256613859,
+              5.0
+            ],
+            "bottom": [
+              -101.256613859,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -106.256613859,
+                0.0
+              ],
+              "end": [
+                -96.256613859,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -101.256613859,
+                -5.0
+              ],
+              "end": [
+                -101.256613859,
+                5.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "hole_9",
+      "type": "HOLE",
+      "shape": "CIRCLE",
+      "center_3d": [
+        -11.718365287,
+        -183.62404443,
+        0.0
+      ],
+      "axis_direction": [
+        0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 5.0,
+      "diameter": 10.0,
+      "height": 10.0,
+      "source_face_id": 11,
+      "orientation": "REVERSED",
+      "projections": {
+        "TOP": {
+          "center": [
+            -11.718365287,
+            -183.62404443
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -11.718365287,
+              -183.62404443
+            ],
+            "left": [
+              -16.718365286999997,
+              -183.62404443
+            ],
+            "right": [
+              -6.718365286999999,
+              -183.62404443
+            ],
+            "top": [
+              -11.718365287,
+              -178.62404443
+            ],
+            "bottom": [
+              -11.718365287,
+              -188.62404443
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -16.718365286999997,
+                -183.62404443
+              ],
+              "end": [
+                -6.718365286999999,
+                -183.62404443
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -11.718365287,
+                -188.62404443
+              ],
+              "end": [
+                -11.718365287,
+                -178.62404443
+              ]
+            }
+          ]
+        },
+        "FRONT": {
+          "center": [
+            -11.718365287,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -11.718365287,
+              0.0
+            ],
+            "left": [
+              -16.718365286999997,
+              0.0
+            ],
+            "right": [
+              -6.718365286999999,
+              0.0
+            ],
+            "top": [
+              -11.718365287,
+              5.0
+            ],
+            "bottom": [
+              -11.718365287,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -16.718365286999997,
+                0.0
+              ],
+              "end": [
+                -6.718365286999999,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -11.718365287,
+                -5.0
+              ],
+              "end": [
+                -11.718365287,
+                5.0
+              ]
+            }
+          ]
+        },
+        "LEFT": {
+          "center": [
+            -183.62404443,
+            0.0
+          ],
+          "radius": 5.0,
+          "diameter": 10.0,
+          "anchor_points": {
+            "center": [
+              -183.62404443,
+              0.0
+            ],
+            "left": [
+              -188.62404443,
+              0.0
+            ],
+            "right": [
+              -178.62404443,
+              0.0
+            ],
+            "top": [
+              -183.62404443,
+              5.0
+            ],
+            "bottom": [
+              -183.62404443,
+              -5.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -188.62404443,
+                0.0
+              ],
+              "end": [
+                -178.62404443,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                -183.62404443,
+                -5.0
+              ],
+              "end": [
+                -183.62404443,
+                5.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "outer_cylinder_1",
+      "type": "OUTER_CYLINDER",
+      "shape": "CIRCLE",
+      "center_3d": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_direction": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "radius": 250.0,
+      "diameter": 500.0,
+      "height": 10.0,
+      "source_face_id": 1,
+      "orientation": "FORWARD",
+      "projections": {
+        "TOP": {
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius": 250.0,
+          "diameter": 500.0,
+          "anchor_points": {
+            "center": [
+              0.0,
+              0.0
+            ],
+            "left": [
+              -250.0,
+              0.0
+            ],
+            "right": [
+              250.0,
+              0.0
+            ],
+            "top": [
+              0.0,
+              250.0
+            ],
+            "bottom": [
+              0.0,
+              -250.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -250.0,
+                0.0
+              ],
+              "end": [
+                250.0,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                0.0,
+                -250.0
+              ],
+              "end": [
+                0.0,
+                250.0
+              ]
+            }
+          ]
+        },
+        "FRONT": {
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius": 250.0,
+          "diameter": 500.0,
+          "anchor_points": {
+            "center": [
+              0.0,
+              0.0
+            ],
+            "left": [
+              -250.0,
+              0.0
+            ],
+            "right": [
+              250.0,
+              0.0
+            ],
+            "top": [
+              0.0,
+              250.0
+            ],
+            "bottom": [
+              0.0,
+              -250.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -250.0,
+                0.0
+              ],
+              "end": [
+                250.0,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                0.0,
+                -250.0
+              ],
+              "end": [
+                0.0,
+                250.0
+              ]
+            }
+          ]
+        },
+        "LEFT": {
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius": 250.0,
+          "diameter": 500.0,
+          "anchor_points": {
+            "center": [
+              0.0,
+              0.0
+            ],
+            "left": [
+              -250.0,
+              0.0
+            ],
+            "right": [
+              250.0,
+              0.0
+            ],
+            "top": [
+              0.0,
+              250.0
+            ],
+            "bottom": [
+              0.0,
+              -250.0
+            ]
+          },
+          "centerlines": [
+            {
+              "id": "horizontal",
+              "start": [
+                -250.0,
+                0.0
+              ],
+              "end": [
+                250.0,
+                0.0
+              ]
+            },
+            {
+              "id": "vertical",
+              "start": [
+                0.0,
+                -250.0
+              ],
+              "end": [
+                0.0,
+                250.0
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "generation_hints_for_csharp": {
+    "recommended_order": [
+      "draw_view_outlines",
+      "draw_centerlines",
+      "draw_holes",
+      "draw_dimensions",
+      "draw_annotations"
+    ],
+    "coordinate_system": "Use projected 2D coordinates from each view. Do not recompute 3D geometry in C#.",
+    "projection_rules": {
+      "TOP": "[x, y, z] -> [x, y]",
+      "FRONT": "[x, y, z] -> [x, z]",
+      "LEFT": "[x, y, z] -> [y, z]"
+    },
+    "units": "mm"
+  }
+}
